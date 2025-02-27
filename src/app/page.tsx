@@ -53,9 +53,9 @@ export default function Home() {
         </ParallaxSection>
         
         {/* About Section */}
-        <section id="about" className="min-h-screen flex items-center justify-center p-8 bg-gray-50">
+        <section id="about" className="min-h-screen flex items-center justify-center p-8 bg-gray-50 text-gray-900">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl md:text-5xl font-bold mb-8 text-center">About Us</h2>
+            <h2 className="text-3xl md:text-5xl font-bold mb-8 text-center text-gray-900">About Us</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <Card title="Our Mission">
                 <p className="text-gray-700">
@@ -74,7 +74,7 @@ export default function Home() {
         </section>
         
         {/* Work Section */}
-        <section id="work" className="min-h-screen flex items-center justify-center p-8 bg-gray-50">
+        <section id="work" className="min-h-screen flex items-center justify-center p-8 bg-gray-50 text-gray-900">
           <div className="max-w-4xl mx-auto w-full">
             <Work />
           </div>

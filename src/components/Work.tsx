@@ -206,7 +206,7 @@ const Work = ({ className = "" }: WorkProps) => {
   ];
 
   return (
-    <section className={`py-16 ${className}`}>
+    <section className={`py-16 ${className} text-gray-900`}>
       <div className="container mx-auto px-4 md:px-8 lg:px-16">
         {galleries.map((gallery, index) => (
           <Gallery 
