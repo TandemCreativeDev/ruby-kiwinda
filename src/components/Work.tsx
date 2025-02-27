@@ -84,6 +84,7 @@ const Gallery = ({ folderName, title }: GalleryProps) => {
           onPrev={() => setPhotoIndex((photoIndex + images.length - 1) % images.length)}
           onNext={() => setPhotoIndex((photoIndex + 1) % images.length)}
           title={title}
+          setPhotoIndex={setPhotoIndex}
         />
       )}
     </div>
