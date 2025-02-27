@@ -19,7 +19,7 @@ export const Hero = ({ className = "" }: HeroProps) => {
     <div className={`relative w-full h-screen ${className}`}>
       {isMounted && (
         <Parallax
-          bgImage="/images/hero-bg.jpg"
+          bgImage="/hero.gif"
           strength={300}
           bgImageStyle={{
             objectFit: "cover",
