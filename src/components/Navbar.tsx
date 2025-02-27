@@ -36,21 +36,43 @@ const NavItem: React.FC<NavItemProps> = ({ to, label, active = false, setActive 
 
 const Navbar: React.FC = () => {
   const [activeItem, setActiveItem] = useState('home');
+  const [visible, setVisible] = useState(false);
   
   useEffect(() => {
     // Register events to update active state when scrolling
     Events.scrollEvent.register('begin', () => {});
     Events.scrollEvent.register('end', () => {});
     
+    const handleScroll = () => {
+      // Get the height of the viewport
+      const viewportHeight = window.innerHeight;
+      
+      // If we've scrolled past the hero section (viewport height), show the navbar
+      if (window.scrollY > viewportHeight * 0.8) {
+        setVisible(true);
+      } else {
+        setVisible(false);
+      }
+    };
+    
+    // Add scroll event listener
+    window.addEventListener('scroll', handleScroll);
+    
+    // Initial check
+    handleScroll();
+    
     return () => {
       // Clean up events
       Events.scrollEvent.remove('begin');
       Events.scrollEvent.remove('end');
+      window.removeEventListener('scroll', handleScroll);
     };
   }, []);
   
   return (
-    <nav className="w-full bg-[#f8f5f0] py-6 px-8 shadow-sm fixed top-0 z-50">
+    <nav className={`w-full bg-[#f8f5f0] py-6 px-8 shadow-sm fixed top-0 z-50 transition-transform duration-300 ${
+      visible ? 'translate-y-0' : '-translate-y-full'
+    }`}>
       <div className="max-w-7xl mx-auto flex justify-between items-center">
         <div className="font-serif text-2xl font-bold text-black">
           Brand
