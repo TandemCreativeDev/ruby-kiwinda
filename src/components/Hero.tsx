@@ -41,7 +41,7 @@ export const Hero = ({ className = "" }: HeroProps) => {
           )}
         >
           <div
-            className="flex items-center justify-center h-screen"
+            className="flex flex-col items-center justify-center h-screen"
             style={{
               position: "relative",
               zIndex: 2,
@@ -55,6 +55,24 @@ export const Hero = ({ className = "" }: HeroProps) => {
                 fill
                 className="object-contain drop-shadow-lg"
               />
+            </div>
+            
+            {/* Bouncing down arrow */}
+            <div className="absolute bottom-10 animate-bounce">
+              <svg 
+                xmlns="http://www.w3.org/2000/svg" 
+                width="40" 
+                height="40" 
+                viewBox="0 0 24 24" 
+                fill="none" 
+                stroke="white" 
+                strokeWidth="2" 
+                strokeLinecap="round" 
+                strokeLinejoin="round"
+                className="drop-shadow-lg"
+              >
+                <path d="M12 5v14M5 12l7 7 7-7"/>
+              </svg>
             </div>
           </div>
         </Parallax>
