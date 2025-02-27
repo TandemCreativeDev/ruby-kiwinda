@@ -163,13 +163,13 @@ const Gallery = ({ title, description, images, longDescription = "Lorem ipsum do
                       setPhotoIndex(index);
                       setIsOpen(true);
                     }}
-                    className="cursor-pointer w-full h-full overflow-hidden"
+                    className="cursor-pointer w-full h-full overflow-hidden relative"
                   >
                     <Image
                       src={src}
                       alt={`${title} image ${index + 1}`}
                       fill
-                      className="object-cover transition-transform duration-700 group-hover:scale-110"
+                      className="object-cover transition-transform duration-700 group-hover:scale-110 z-0"
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                       priority={true}
                       loading="eager"
@@ -177,7 +177,7 @@ const Gallery = ({ title, description, images, longDescription = "Lorem ipsum do
                         console.error(`Failed to load image: ${src}`);
                       }}
                     />
-                    <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition-all duration-300 flex items-center justify-center pointer-events-none">
+                    <div className="absolute inset-0 bg-transparent group-hover:bg-black/20 transition-all duration-300 flex items-center justify-center pointer-events-none z-10">
                       <div className="transform translate-y-10 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
                         <div className="w-12 h-12 rounded-full bg-white bg-opacity-80 flex items-center justify-center">
                           <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
