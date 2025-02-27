@@ -10,9 +10,25 @@ interface HeroProps {
 
 export const Hero = ({ className = "" }: HeroProps) => {
   const [isMounted, setIsMounted] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
     setIsMounted(true);
+    
+    // Check if we're on mobile
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    
+    // Initial check
+    checkMobile();
+    
+    // Add resize listener
+    window.addEventListener('resize', checkMobile);
+    
+    return () => {
+      window.removeEventListener('resize', checkMobile);
+    };
   }, []);
 
   return (
@@ -20,7 +36,7 @@ export const Hero = ({ className = "" }: HeroProps) => {
       {isMounted && (
         <Parallax
           bgImage="/hero.gif"
-          strength={300}
+          strength={isMobile ? 100 : 300} // Reduce strength on mobile
           bgImageStyle={{
             objectFit: "cover",
             width: "100%",
@@ -41,13 +57,13 @@ export const Hero = ({ className = "" }: HeroProps) => {
           )}
         >
           <div
-            className="flex flex-col items-center justify-center h-screen"
+            className="flex flex-col items-center justify-center h-screen px-4"
             style={{
               position: "relative",
               zIndex: 2,
             }}
           >
-            <div className="relative w-64 h-64 md:w-96 md:h-96 animate-pulse-slow">
+            <div className="relative w-48 h-48 sm:w-64 sm:h-64 md:w-96 md:h-96 animate-pulse-slow">
               <Image
                 src="/logo-white.png"
                 alt="Logo"
@@ -61,15 +77,15 @@ export const Hero = ({ className = "" }: HeroProps) => {
             <div className="absolute bottom-10 animate-bounce">
               <svg 
                 xmlns="http://www.w3.org/2000/svg" 
-                width="40" 
-                height="40" 
+                width="32" 
+                height="32" 
                 viewBox="0 0 24 24" 
                 fill="none" 
                 stroke="white" 
                 strokeWidth="2" 
                 strokeLinecap="round" 
                 strokeLinejoin="round"
-                className="drop-shadow-lg"
+                className="drop-shadow-lg sm:w-10 sm:h-10"
               >
                 <path d="M12 5v14M5 12l7 7 7-7"/>
               </svg>

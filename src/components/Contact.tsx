@@ -29,25 +29,25 @@ const Contact = ({ className = "" }: ContactProps) => {
   return (
     <div
       id="contact"
-      className={`pt-32 pb-24 bg-[#f8f5f0] ${className}`}
+      className={`pt-20 sm:pt-32 pb-16 sm:pb-24 bg-[#f8f5f0] ${className}`}
       style={{ scrollMarginTop: "100px", paddingTop: "6rem" }}
     >
-      <div className="container mx-auto px-8 max-w-5xl">
-        <div className="flex flex-col md:flex-row gap-16">
+      <div className="container mx-auto px-4 sm:px-8 max-w-5xl">
+        <div className="flex flex-col md:flex-row gap-8 md:gap-16">
           {/* Left side - Contact information */}
           <div className="md:w-1/2">
-            <h2 className="text-4xl md:text-5xl font-serif font-light mb-8 text-black">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif font-light mb-6 sm:mb-8 text-black text-center md:text-left">
               Get in touch
             </h2>
-            <p className="text-xl font-serif leading-relaxed text-gray-800 mb-8">
+            <p className="text-lg sm:text-xl font-serif leading-relaxed text-gray-800 mb-8 text-center md:text-left">
               We would love to hear from you. Whether you have a question about
               our services, projects, or anything else, our team is ready to
               answer all your questions.
             </p>
 
-            <div className="space-y-6 mt-12">
+            <div className="space-y-4 sm:space-y-6 mt-8 sm:mt-12">
               <div className="group transition-all duration-300 p-4 -mx-4 rounded-lg hover:bg-white hover:shadow-md">
-                <h3 className="text-xl font-serif font-medium mb-2 group-hover:text-black">
+                <h3 className="text-lg sm:text-xl font-serif font-medium mb-2 group-hover:text-black">
                   Email
                 </h3>
                 <p className="text-gray-700 group-hover:text-black">
@@ -56,7 +56,7 @@ const Contact = ({ className = "" }: ContactProps) => {
               </div>
 
               <div className="group transition-all duration-300 p-4 -mx-4 rounded-lg hover:bg-white hover:shadow-md">
-                <h3 className="text-xl font-serif font-medium mb-2 group-hover:text-black">
+                <h3 className="text-lg sm:text-xl font-serif font-medium mb-2 group-hover:text-black">
                   Phone
                 </h3>
                 <p className="text-gray-700 group-hover:text-black">
@@ -65,7 +65,7 @@ const Contact = ({ className = "" }: ContactProps) => {
               </div>
 
               <div className="group transition-all duration-300 p-4 -mx-4 rounded-lg hover:bg-white hover:shadow-md">
-                <h3 className="text-xl font-serif font-medium mb-2 group-hover:text-black">
+                <h3 className="text-lg sm:text-xl font-serif font-medium mb-2 group-hover:text-black">
                   Address
                 </h3>
                 <p className="text-gray-700 group-hover:text-black">
@@ -78,13 +78,13 @@ const Contact = ({ className = "" }: ContactProps) => {
           </div>
 
           {/* Right side - Contact form */}
-          <div className="md:w-1/2">
-            <form onSubmit={handleSubmit} className="space-y-8">
-              <div className="space-y-6">
+          <div className="md:w-1/2 mt-12 md:mt-0">
+            <form onSubmit={handleSubmit} className="space-y-6 sm:space-y-8">
+              <div className="space-y-4 sm:space-y-6">
                 <div>
                   <label
                     htmlFor="name"
-                    className="block text-lg font-serif mb-2 text-gray-800"
+                    className="block text-base sm:text-lg font-serif mb-2 text-gray-800"
                   >
                     Name
                   </label>
@@ -102,7 +102,7 @@ const Contact = ({ className = "" }: ContactProps) => {
                 <div>
                   <label
                     htmlFor="email"
-                    className="block text-lg font-serif mb-2 text-gray-800"
+                    className="block text-base sm:text-lg font-serif mb-2 text-gray-800"
                   >
                     Email
                   </label>
@@ -120,7 +120,7 @@ const Contact = ({ className = "" }: ContactProps) => {
                 <div>
                   <label
                     htmlFor="message"
-                    className="block text-lg font-serif mb-2 text-gray-800"
+                    className="block text-base sm:text-lg font-serif mb-2 text-gray-800"
                   >
                     Message
                   </label>
@@ -138,7 +138,7 @@ const Contact = ({ className = "" }: ContactProps) => {
 
               <Button
                 variant="outline"
-                className="mt-8 px-8 py-3 border-2 border-black text-black hover:bg-black hover:text-white transition-all duration-300 font-serif text-lg relative overflow-hidden group"
+                className="mt-6 sm:mt-8 px-6 sm:px-8 py-2 sm:py-3 border-2 border-black text-black hover:bg-black hover:text-white transition-all duration-300 font-serif text-base sm:text-lg relative overflow-hidden group w-full sm:w-auto"
               >
                 <span className="relative z-10 group-hover:text-white transition-colors duration-300">
                   Send Message
