@@ -12,8 +12,9 @@ const Gallery = ({ folderName, title }: GalleryProps) => {
   useEffect(() => {
     // In a real implementation, you would fetch the image list from an API
     // For now, we'll simulate with placeholder images
+    // Using the work-bg.jpg as a placeholder since that's what we have in public
     const simulatedImages = Array.from({ length: 8 }, (_, i) => 
-      `/work/${folderName}/image-${i + 1}.jpg`
+      `/images/work-bg.jpg`
     );
     setImages(simulatedImages);
   }, [folderName]);
@@ -37,7 +38,7 @@ const Gallery = ({ folderName, title }: GalleryProps) => {
                 onError={(e) => {
                   // Fallback for images that might not exist
                   const target = e.target as HTMLImageElement;
-                  target.src = '/work/placeholder.jpg';
+                  target.src = '/images/work-bg.jpg'; // Using available image as fallback
                 }}
               />
             </div>

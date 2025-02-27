@@ -17,7 +17,7 @@ export const Hero = ({ className = '' }: HeroProps) => {
     <div className={`relative w-full h-screen ${className}`}>
       {isMounted && (
         <Parallax
-          bgImage="/hero.gif"
+          bgImage="/images/hero-bg.jpg"
           strength={300}
           bgImageStyle={{ 
             objectFit: 'cover',
@@ -45,7 +45,7 @@ export const Hero = ({ className = '' }: HeroProps) => {
           >
             <div className="relative w-64 h-64 md:w-96 md:h-96 animate-pulse-slow">
               <Image
-                src="/logo-white.png"
+                src="/vercel.svg"
                 alt="Logo"
                 priority
                 fill
