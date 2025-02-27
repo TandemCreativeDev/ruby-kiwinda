@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
+import Lightbox from 'react-image-lightbox';
+import 'react-image-lightbox/style.css';
 
 interface GalleryProps {
   folderName: string;
@@ -8,6 +10,8 @@ interface GalleryProps {
 
 const Gallery = ({ folderName, title }: GalleryProps) => {
   const [images, setImages] = useState<string[]>([]);
+  const [isOpen, setIsOpen] = useState(false);
+  const [photoIndex, setPhotoIndex] = useState(0);
   
   useEffect(() => {
     // In a real implementation, you would fetch the image list from an API
@@ -29,22 +33,47 @@ const Gallery = ({ folderName, title }: GalleryProps) => {
               key={index} 
               className="flex-shrink-0 w-80 h-60 relative rounded-lg overflow-hidden shadow-lg"
             >
-              <Image
-                src={src}
-                alt={`${title} ${index + 1}`}
-                fill
-                className="object-cover hover:scale-105 transition-transform duration-300"
-                sizes="(max-width: 768px) 100vw, 320px"
-                onError={(e) => {
-                  // Fallback for images that might not exist
-                  const target = e.target as HTMLImageElement;
-                  target.src = '/images/work-bg.jpg'; // Using available image as fallback
+              <div 
+                onClick={() => {
+                  setPhotoIndex(index);
+                  setIsOpen(true);
                 }}
-              />
+                className="cursor-pointer w-full h-full"
+              >
+                <Image
+                  src={src}
+                  alt={`${title} ${index + 1}`}
+                  fill
+                  className="object-cover hover:scale-105 transition-transform duration-300"
+                  sizes="(max-width: 768px) 100vw, 320px"
+                  onError={(e) => {
+                    // Fallback for images that might not exist
+                    const target = e.target as HTMLImageElement;
+                    target.src = '/images/work-bg.jpg'; // Using available image as fallback
+                  }}
+                />
+              </div>
             </div>
           ))}
         </div>
       </div>
+      
+      {isOpen && (
+        <Lightbox
+          mainSrc={images[photoIndex]}
+          nextSrc={images[(photoIndex + 1) % images.length]}
+          prevSrc={images[(photoIndex + images.length - 1) % images.length]}
+          onCloseRequest={() => setIsOpen(false)}
+          onMovePrevRequest={() =>
+            setPhotoIndex((photoIndex + images.length - 1) % images.length)
+          }
+          onMoveNextRequest={() =>
+            setPhotoIndex((photoIndex + 1) % images.length)
+          }
+          imageTitle={`${title} - Image ${photoIndex + 1} of ${images.length}`}
+          imageCaption={`${title} gallery`}
+        />
+      )}
     </div>
   );
 };
