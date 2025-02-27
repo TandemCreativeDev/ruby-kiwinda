@@ -48,7 +48,7 @@ const Navbar: React.FC = () => {
       const viewportHeight = window.innerHeight;
       
       // If we've scrolled past the hero section (viewport height), show the navbar
-      if (window.scrollY > viewportHeight * 0.8) {
+      if (window.scrollY > viewportHeight * 0.5) {
         setVisible(true);
       } else {
         setVisible(false);
