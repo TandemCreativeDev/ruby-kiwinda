@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { Navbar, Card, Button, ParallaxSection } from "@/components";
+import { Navbar, Card, Button, ParallaxSection, Work } from "@/components";
 
 export default function Home() {
   return (
