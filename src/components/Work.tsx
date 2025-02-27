@@ -78,26 +78,24 @@ const Gallery = ({ title, description, images }: GalleryProps) => {
 
   return (
     <div className="mb-24">
-      <h2 className="text-3xl md:text-4xl font-bold mb-8 text-right pr-[30vw]">
-        {title}
-      </h2>
-      <p className="text-right text-lg mb-12 max-w-3xl ml-auto mr-[30vw]">
-        {description}
-      </p>
+      <div className="w-full pr-8">
+        <h2 className="text-3xl md:text-4xl font-bold mb-8 text-right pr-[5%]">
+          {title}
+        </h2>
+        <p className="text-right text-lg mb-12 max-w-3xl ml-auto pr-[5%]">
+          {description}
+        </p>
+      </div>
       
-      <div 
-        className="relative overflow-hidden"
-        style={{ 
-          maxWidth: "100vw",
-          margin: "0 auto",
-          marginLeft: "auto",
-          marginRight: "0"
-        }}
-      >
+      <div className="relative w-full overflow-visible">
+        {/* Left whitespace overlay */}
+        <div className="absolute left-0 top-0 bg-white w-[45%] h-full z-10"></div>
+        
+        {/* Gallery container */}
         <div 
           ref={galleryRef}
           className={`
-            overflow-x-auto scrollbar-hide pb-8 
+            w-full overflow-x-auto pb-8 
             ${isDragging ? "cursor-grabbing" : "cursor-grab"}
           `}
           style={{
@@ -114,20 +112,20 @@ const Gallery = ({ title, description, images }: GalleryProps) => {
           onTouchMove={handleTouchMove}
           onTouchEnd={handleTouchEnd}
         >
-          <div className="flex space-x-8 md:space-x-10 pl-[50vw] pr-[30vw]">
+          <div className="flex space-x-8 pl-[45%] pr-[30%]">
             {isLoading ? (
               // Loading skeletons
               Array.from({ length: 4 }).map((_, index) => (
                 <div 
                   key={`skeleton-${index}`} 
-                  className="flex-shrink-0 w-72 md:w-96 h-64 md:h-80 relative rounded-lg overflow-hidden shadow-lg bg-gray-200 animate-pulse"
+                  className="flex-shrink-0 w-[40vw] max-w-[450px] min-w-[280px] h-[30vw] max-h-[350px] min-h-[200px] relative rounded-lg overflow-hidden shadow-lg bg-gray-200 animate-pulse"
                 />
               ))
             ) : (
               images.map((src, index) => (
                 <div 
                   key={index} 
-                  className="flex-shrink-0 w-[45vw] max-w-[500px] min-w-[300px] h-[30vw] max-h-[350px] min-h-[200px] relative rounded-lg overflow-hidden shadow-lg transition-all duration-300 hover:shadow-xl scroll-snap-align-start"
+                  className="flex-shrink-0 w-[40vw] max-w-[450px] min-w-[280px] h-[30vw] max-h-[350px] min-h-[200px] relative rounded-lg overflow-hidden shadow-lg transition-all duration-300 hover:shadow-xl"
                   style={{ scrollSnapAlign: "start" }}
                 >
                   <div 
@@ -155,12 +153,11 @@ const Gallery = ({ title, description, images }: GalleryProps) => {
           </div>
         </div>
         
-        {/* Scroll indicators */}
-        <div className="absolute left-0 top-1/2 transform -translate-y-1/2 bg-gradient-to-r from-white via-white to-transparent w-[50vw] h-full opacity-90 pointer-events-none"></div>
-        <div className="absolute right-0 top-1/2 transform -translate-y-1/2 bg-gradient-to-l from-white via-white to-transparent w-24 h-full opacity-75 pointer-events-none"></div>
+        {/* Right fade effect */}
+        <div className="absolute right-0 top-0 bg-gradient-to-l from-white to-transparent w-[15%] h-full pointer-events-none"></div>
       </div>
       
-      <div className="text-center mt-8">
+      <div className="text-right mt-8 pr-[5%]">
         <p className="text-sm text-gray-500">
           Drag to explore more images • Click on any image to view in full screen
         </p>
@@ -201,7 +198,7 @@ const Work = ({ className = "" }: WorkProps) => {
       title: "Playing Cards",
       description: "Custom designed playing cards featuring unique illustrations and artistic elements.",
       images: [
-        "/playing-cards/Playing Cards Illustration.jgp",
+        "/playing-cards/Playing Cards Illustration.JPG",
         "/playing-cards/Playing Card 02.PNG",
         "/playing-cards/Playing Card 03.JPG",
         "/playing-cards/Playing Card Illustration.JPG"
@@ -211,7 +208,7 @@ const Work = ({ className = "" }: WorkProps) => {
 
   return (
     <section className={`py-16 ${className} text-gray-900`}>
-      <div className="w-full px-0 md:px-0 lg:px-0 overflow-hidden relative">
+      <div className="w-full overflow-hidden">
         {galleries.map((gallery, index) => (
           <Gallery 
             key={index}
