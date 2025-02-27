@@ -12,25 +12,9 @@ export default function Home() {
           <Hero />
         </section>
         
-        {/* About Section */}
-        <section id="about" className="min-h-screen flex items-center justify-center p-8 bg-gray-50 text-gray-900">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl md:text-5xl font-bold mb-8 text-center text-gray-900">About Us</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              <Card title="Our Mission">
-                <p className="text-gray-700">
-                  We strive to create beautiful, functional websites that deliver exceptional user experiences.
-                  Our team is dedicated to pushing the boundaries of web development.
-                </p>
-              </Card>
-              <Card title="Our Vision">
-                <p className="text-gray-700">
-                  To become the leading web development agency known for innovative solutions
-                  and cutting-edge technologies that help businesses succeed online.
-                </p>
-              </Card>
-            </div>
-          </div>
+        {/* About Section - Placeholder for future content */}
+        <section id="about" className="min-h-screen bg-gray-50">
+          {/* About content will be added later */}
         </section>
         
         {/* Work Section */}
