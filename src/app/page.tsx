@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { Navbar, Card, Button } from "@/components";
+import { Navbar, Card, Button, ParallaxSection } from "@/components";
 
 export default function Home() {
   return (
@@ -7,15 +7,20 @@ export default function Home() {
       <Navbar />
       <div className="pt-24 font-[family-name:var(--font-geist-sans)]"> {/* Added padding-top to account for fixed navbar */}
         
-        {/* Home Section */}
-        <section id="home" className="min-h-screen flex items-center justify-center p-8">
-          <div className="max-w-4xl mx-auto text-center">
+        {/* Home Section with Parallax */}
+        <ParallaxSection 
+          id="home" 
+          bgImage="/images/hero-bg.jpg" 
+          strength={500}
+          overlayColor="rgba(0, 0, 0, 0.3)"
+        >
+          <div className="text-center text-white">
             <h1 className="text-4xl md:text-6xl font-bold mb-6">Welcome to Our Website</h1>
-            <p className="text-xl mb-8">A modern Next.js application with smooth scrolling navigation</p>
+            <p className="text-xl mb-8">A modern Next.js application with smooth scrolling and parallax effects</p>
             
             <div className="flex gap-4 items-center justify-center flex-col sm:flex-row">
               <Image
-                className="dark:invert mb-8"
+                className="invert mb-8"
                 src="/next.svg"
                 alt="Next.js logo"
                 width={180}
@@ -28,7 +33,7 @@ export default function Home() {
                 className="flex items-center gap-2"
               >
                 <Image
-                  className="dark:invert"
+                  className="invert"
                   src="/vercel.svg"
                   alt="Vercel logomark"
                   width={20}
@@ -39,12 +44,13 @@ export default function Home() {
               <Button 
                 variant="outline" 
                 size="large"
+                className="text-white border-white hover:bg-white hover:text-black"
               >
                 Learn More
               </Button>
             </div>
           </div>
-        </section>
+        </ParallaxSection>
         
         {/* About Section */}
         <section id="about" className="min-h-screen flex items-center justify-center p-8 bg-gray-50">
@@ -67,22 +73,27 @@ export default function Home() {
           </div>
         </section>
         
-        {/* Work Section */}
-        <section id="work" className="min-h-screen flex items-center justify-center p-8">
-          <div className="max-w-4xl mx-auto">
+        {/* Work Section with Parallax */}
+        <ParallaxSection 
+          id="work" 
+          bgImage="/images/work-bg.jpg" 
+          strength={300}
+          overlayColor="rgba(0, 0, 0, 0.6)"
+        >
+          <div className="text-white">
             <h2 className="text-3xl md:text-5xl font-bold mb-8 text-center">Our Work</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {[1, 2, 3].map((item) => (
-                <Card key={item} className="hover:shadow-lg transition-shadow">
+                <Card key={item} className="hover:shadow-lg transition-shadow bg-white/90 backdrop-blur-sm">
                   <div className="aspect-video bg-gray-200 mb-4 rounded"></div>
-                  <h3 className="font-bold text-xl mb-2">Project {item}</h3>
+                  <h3 className="font-bold text-xl mb-2 text-gray-900">Project {item}</h3>
                   <p className="text-gray-700 mb-4">A brief description of this amazing project and the technologies used.</p>
                   <Button variant="secondary" size="small">View Details</Button>
                 </Card>
               ))}
             </div>
           </div>
-        </section>
+        </ParallaxSection>
         
         {/* Contact Section */}
         <section id="contact" className="min-h-screen flex items-center justify-center p-8 bg-gray-50">
