@@ -16,7 +16,7 @@ const NavItem: React.FC<NavItemProps> = ({ to, label, active = false, setActive 
       to={to}
       spy={true}
       smooth={true}
-      offset={-70} // Adjust based on navbar height
+      offset={0} // Changed from -70 to 0 to prevent navbar overlap
       duration={500}
       onSetActive={() => setActive(to)}
       className={`
