@@ -26,11 +26,8 @@ const Gallery = ({ title, description, images, longDescription = "Lorem ipsum do
     // Set loading to false immediately to show images
     setIsLoading(false);
     
-    // Preload images
-    images.forEach(src => {
-      const img = new Image();
-      img.src = src;
-    });
+    // No need to manually preload images as Next.js handles this
+    // when we use the Image component with priority={true}
     
     return () => {};
   }, [images]);
