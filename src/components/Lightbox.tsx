@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import Image from 'next/image';
 
 interface LightboxProps {
@@ -50,7 +50,7 @@ const Lightbox = ({
       {/* Navigation buttons */}
       <button 
         onClick={onPrev}
-        className="absolute left-4 text-white text-4xl z-50 hover:text-gray-300"
+        className="absolute left-4 text-white text-4xl z-50 hover:text-gray-300 w-12 h-12 flex items-center justify-center"
         aria-label="Previous image"
       >
         ‹
@@ -58,20 +58,22 @@ const Lightbox = ({
       
       <button 
         onClick={onNext}
-        className="absolute right-4 text-white text-4xl z-50 hover:text-gray-300"
+        className="absolute right-4 text-white text-4xl z-50 hover:text-gray-300 w-12 h-12 flex items-center justify-center"
         aria-label="Next image"
       >
         ›
       </button>
       
       {/* Image container */}
-      <div className="relative w-[90vw] h-[80vh]">
+      <div className="relative w-[90vw] h-[80vh] md:w-[80vw] md:h-[80vh]">
         <Image
           src={images[currentIndex]}
           alt={title ? `${title} - Image ${currentIndex + 1}` : `Image ${currentIndex + 1}`}
           fill
           className="object-contain"
-          sizes="90vw"
+          sizes="(max-width: 768px) 90vw, 80vw"
+          priority
+          quality={90}
         />
       </div>
       

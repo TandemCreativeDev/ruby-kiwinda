@@ -11,15 +11,24 @@ const Gallery = ({ folderName, title }: GalleryProps) => {
   const [images, setImages] = useState<string[]>([]);
   const [isOpen, setIsOpen] = useState(false);
   const [photoIndex, setPhotoIndex] = useState(0);
+  const [isLoading, setIsLoading] = useState(true);
   
   useEffect(() => {
+    setIsLoading(true);
     // In a real implementation, you would fetch the image list from an API
     // For now, we'll simulate with placeholder images
     // Using the work-bg.jpg as a placeholder since that's what we have in public
     const simulatedImages = Array.from({ length: 8 }, (_, i) => 
       `/images/work-bg.jpg`
     );
-    setImages(simulatedImages);
+    
+    // Simulate loading delay
+    const timer = setTimeout(() => {
+      setImages(simulatedImages);
+      setIsLoading(false);
+    }, 500);
+    
+    return () => clearTimeout(timer);
   }, [folderName]);
 
   return (
@@ -27,7 +36,16 @@ const Gallery = ({ folderName, title }: GalleryProps) => {
       <h3 className="text-2xl font-bold mb-6">{title}</h3>
       <div className="overflow-x-auto pb-4">
         <div className="flex space-x-20 px-4">
-          {images.map((src, index) => (
+          {isLoading ? (
+            // Loading skeleton
+            Array.from({ length: 4 }).map((_, index) => (
+              <div 
+                key={`skeleton-${index}`} 
+                className="flex-shrink-0 w-80 h-60 relative rounded-lg overflow-hidden shadow-lg bg-gray-200 animate-pulse"
+              />
+            ))
+          ) : (
+            images.map((src, index) => (
             <div 
               key={index} 
               className="flex-shrink-0 w-80 h-60 relative rounded-lg overflow-hidden shadow-lg"
@@ -53,7 +71,8 @@ const Gallery = ({ folderName, title }: GalleryProps) => {
                 />
               </div>
             </div>
-          ))}
+            ))
+          )}
         </div>
       </div>
       
