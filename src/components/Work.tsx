@@ -98,9 +98,10 @@ const Gallery = ({ title, description, images, longDescription = "Lorem ipsum do
 
   return (
     <div className="mb-24">
-      <div className="w-full pr-8">
-        <h2 className="text-3xl md:text-4xl font-bold mb-8 text-right pr-[5%]">
-          {title}
+      <div className="w-full pr-8 relative">
+        <h2 className="text-3xl md:text-4xl font-bold mb-8 text-right pr-[5%] relative inline-block">
+          <span className="relative z-10">{title}</span>
+          <span className="absolute bottom-0 left-0 w-full h-[8px] bg-yellow-200 opacity-50 -z-10 transform -rotate-1"></span>
         </h2>
         <p className="text-right text-lg mb-12 max-w-3xl ml-auto pr-[5%]">
           {description}
@@ -110,7 +111,9 @@ const Gallery = ({ title, description, images, longDescription = "Lorem ipsum do
       <div className="flex flex-col md:flex-row">
         {/* Left side - Long description */}
         <div className="md:w-1/3 px-8 mb-8 md:mb-0">
-          <p className="text-gray-700 prose">{longDescription}</p>
+          <div className="border-l-4 border-gray-200 pl-6 transition-all duration-300 hover:border-yellow-300">
+            <p className="text-gray-700 prose">{longDescription}</p>
+          </div>
         </div>
         
         {/* Right side - Gallery */}
@@ -121,9 +124,10 @@ const Gallery = ({ title, description, images, longDescription = "Lorem ipsum do
           className={`
             w-full overflow-x-auto pb-8 
             ${isDragging ? "cursor-grabbing" : "cursor-grab"}
+            scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-transparent hover:scrollbar-thumb-gray-400
           `}
           style={{
-            scrollbarWidth: "none",
+            scrollbarWidth: "thin",
             msOverflowStyle: "none",
             WebkitOverflowScrolling: "touch"
           }}
@@ -148,7 +152,7 @@ const Gallery = ({ title, description, images, longDescription = "Lorem ipsum do
               images.map((src, index) => (
                 <div 
                   key={index} 
-                  className="flex-shrink-0 w-[40vw] max-w-[450px] min-w-[280px] h-[30vw] max-h-[350px] min-h-[200px] relative rounded-lg overflow-hidden shadow-lg transition-all duration-300 hover:shadow-xl"
+                  className="flex-shrink-0 w-[40vw] max-w-[450px] min-w-[280px] h-[30vw] max-h-[350px] min-h-[200px] relative rounded-lg overflow-hidden shadow-lg transition-all duration-300 hover:shadow-2xl group"
                   style={{ scrollSnapAlign: "none" }}
                 >
                   <div 
@@ -156,19 +160,28 @@ const Gallery = ({ title, description, images, longDescription = "Lorem ipsum do
                       setPhotoIndex(index);
                       setIsOpen(true);
                     }}
-                    className="cursor-pointer w-full h-full"
+                    className="cursor-pointer w-full h-full overflow-hidden"
                   >
                     <Image
                       src={src}
                       alt={`${title} image ${index + 1}`}
                       fill
-                      className="object-cover hover:scale-105 transition-transform duration-500"
+                      className="object-cover transition-transform duration-700 group-hover:scale-110"
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                       priority={index < 2}
                       onError={(e) => {
                         console.error(`Failed to load image: ${src}`);
                       }}
                     />
+                    <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition-all duration-300 flex items-center justify-center">
+                      <div className="transform translate-y-10 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
+                        <div className="w-12 h-12 rounded-full bg-white bg-opacity-80 flex items-center justify-center">
+                          <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                          </svg>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               ))
@@ -182,8 +195,10 @@ const Gallery = ({ title, description, images, longDescription = "Lorem ipsum do
       </div>
       
       <div className="text-right mt-8 pr-[5%]">
-        <p className="text-sm text-gray-500">
+        <p className="text-sm text-gray-500 inline-flex items-center justify-end gap-2 transition-all duration-300 hover:text-gray-800">
+          <span className="inline-block transform transition-transform duration-300 hover:translate-x-[-5px]">←</span>
           Drag to explore more images • Click on any image to view in full screen
+          <span className="inline-block transform transition-transform duration-300 hover:translate-x-[5px]">→</span>
         </p>
       </div>
       
