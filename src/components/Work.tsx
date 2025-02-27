@@ -30,6 +30,14 @@ const Gallery = ({ title, description, images }: GalleryProps) => {
     return () => clearTimeout(timer);
   }, []);
   
+  // Set initial scroll position to ensure first image is visible
+  useEffect(() => {
+    if (galleryRef.current && !isLoading) {
+      // Reset scroll position to 0 to ensure the first image is properly positioned
+      galleryRef.current.scrollLeft = 0;
+    }
+  }, [isLoading]);
+  
   const handleMouseDown = (e: React.MouseEvent) => {
     if (!galleryRef.current) return;
     setIsDragging(true);
