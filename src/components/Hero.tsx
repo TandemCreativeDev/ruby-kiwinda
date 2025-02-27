@@ -1,14 +1,14 @@
-'use client'
+"use client";
 
-import { Parallax } from 'react-parallax';
-import Image from 'next/image';
-import { useEffect, useState } from 'react';
+import { Parallax } from "react-parallax";
+import Image from "next/image";
+import { useEffect, useState } from "react";
 
 interface HeroProps {
   className?: string;
 }
 
-export const Hero = ({ className = '' }: HeroProps) => {
+export const Hero = ({ className = "" }: HeroProps) => {
   const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
@@ -19,35 +19,35 @@ export const Hero = ({ className = '' }: HeroProps) => {
     <div className={`relative w-full h-screen ${className}`}>
       {isMounted && (
         <Parallax
-          bgImage="/images/hero-bg.jpg"
+          bgImage="/hero.gif"
           strength={300}
-          bgImageStyle={{ 
-            objectFit: 'cover',
-            width: '100%',
-            height: '100%'
+          bgImageStyle={{
+            objectFit: "cover",
+            width: "100%",
+            height: "100%",
           }}
           className="h-screen"
           renderLayer={(percentage) => (
             <div
               style={{
-                position: 'absolute',
-                width: '100%',
-                height: '100%',
-                opacity: Math.min(1, percentage * 1.5)
+                position: "absolute",
+                width: "100%",
+                height: "100%",
+                opacity: Math.min(1, percentage * 1.5),
               }}
             />
           )}
         >
-          <div 
+          <div
             className="flex items-center justify-center h-screen"
-            style={{ 
-              position: 'relative',
-              zIndex: 2
+            style={{
+              position: "relative",
+              zIndex: 2,
             }}
           >
             <div className="relative w-64 h-64 md:w-96 md:h-96 animate-pulse-slow">
               <Image
-                src="/vercel.svg"
+                src="/logo-white.png"
                 alt="Logo"
                 priority
                 fill
