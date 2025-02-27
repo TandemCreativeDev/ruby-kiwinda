@@ -88,8 +88,9 @@ const Gallery = ({ title, description, images }: GalleryProps) => {
       <div 
         className="relative overflow-hidden"
         style={{ 
-          maxWidth: "100%",
-          margin: "0 auto"
+          maxWidth: "100vw",
+          margin: "0 auto",
+          marginLeft: "0"
         }}
       >
         <div 
@@ -112,7 +113,7 @@ const Gallery = ({ title, description, images }: GalleryProps) => {
           onTouchMove={handleTouchMove}
           onTouchEnd={handleTouchEnd}
         >
-          <div className="flex space-x-8 md:space-x-10 pl-0 pr-[50vw]">
+          <div className="flex space-x-8 md:space-x-10 pl-8 pr-[80vw]">
             {isLoading ? (
               // Loading skeletons
               Array.from({ length: 4 }).map((_, index) => (
@@ -208,7 +209,7 @@ const Work = ({ className = "" }: WorkProps) => {
 
   return (
     <section className={`py-16 ${className} text-gray-900`}>
-      <div className="container mx-auto px-4 md:px-8 lg:px-16">
+      <div className="w-full px-0 md:px-0 lg:px-0 overflow-hidden">
         {galleries.map((gallery, index) => (
           <Gallery 
             key={index}
