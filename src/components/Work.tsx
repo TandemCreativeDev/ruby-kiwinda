@@ -101,7 +101,8 @@ const Gallery = ({ title, description, images }: GalleryProps) => {
           style={{
             scrollbarWidth: "none",
             msOverflowStyle: "none",
-            WebkitOverflowScrolling: "touch"
+            WebkitOverflowScrolling: "touch",
+            scrollSnapType: "x mandatory"
           }}
           onMouseDown={handleMouseDown}
           onMouseUp={handleMouseUp}
@@ -111,7 +112,7 @@ const Gallery = ({ title, description, images }: GalleryProps) => {
           onTouchMove={handleTouchMove}
           onTouchEnd={handleTouchEnd}
         >
-          <div className="flex space-x-6 md:space-x-8 px-4">
+          <div className="flex space-x-8 md:space-x-10 pl-0 pr-[50vw]">
             {isLoading ? (
               // Loading skeletons
               Array.from({ length: 4 }).map((_, index) => (
@@ -124,7 +125,8 @@ const Gallery = ({ title, description, images }: GalleryProps) => {
               images.map((src, index) => (
                 <div 
                   key={index} 
-                  className="flex-shrink-0 w-72 md:w-96 h-64 md:h-80 relative rounded-lg overflow-hidden shadow-lg transition-all duration-300 hover:shadow-xl"
+                  className="flex-shrink-0 w-[45vw] max-w-[500px] min-w-[300px] h-[30vw] max-h-[350px] min-h-[200px] relative rounded-lg overflow-hidden shadow-lg transition-all duration-300 hover:shadow-xl scroll-snap-align-start"
+                  style={{ scrollSnapAlign: "start" }}
                 >
                   <div 
                     onClick={() => {
@@ -152,8 +154,7 @@ const Gallery = ({ title, description, images }: GalleryProps) => {
         </div>
         
         {/* Scroll indicators */}
-        <div className="absolute left-0 top-1/2 transform -translate-y-1/2 bg-gradient-to-r from-white via-white to-transparent w-12 h-full opacity-75 pointer-events-none"></div>
-        <div className="absolute right-0 top-1/2 transform -translate-y-1/2 bg-gradient-to-l from-white via-white to-transparent w-12 h-full opacity-75 pointer-events-none"></div>
+        <div className="absolute right-0 top-1/2 transform -translate-y-1/2 bg-gradient-to-l from-white via-white to-transparent w-24 h-full opacity-75 pointer-events-none"></div>
       </div>
       
       <div className="text-center mt-8">

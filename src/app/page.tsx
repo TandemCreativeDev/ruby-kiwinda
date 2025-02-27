@@ -75,7 +75,7 @@ export default function Home() {
         
         {/* Work Section */}
         <section id="work" className="min-h-screen flex items-center justify-center p-8 bg-gray-50 text-gray-900">
-          <div className="max-w-4xl mx-auto w-full">
+          <div className="w-full max-w-[90vw] mx-auto">
             <Work />
           </div>
         </section>
