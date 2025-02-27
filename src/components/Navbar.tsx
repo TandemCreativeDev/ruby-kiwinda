@@ -16,7 +16,7 @@ const NavItem: React.FC<NavItemProps> = ({ to, label, active = false, setActive 
       to={to}
       spy={true}
       smooth={true}
-      offset={0} // Changed from -70 to 0 to prevent navbar overlap
+      offset={-100} // Negative offset to account for navbar height
       duration={500}
       onSetActive={() => setActive(to)}
       className={`
@@ -70,9 +70,9 @@ const Navbar: React.FC = () => {
   }, []);
   
   return (
-    <nav className={`w-full bg-[#f8f5f0] py-6 px-8 shadow-sm fixed top-0 z-50 transition-transform duration-300 ${
+    <nav className={`w-full bg-[#f8f5f0] py-4 px-8 shadow-sm fixed top-0 z-50 transition-transform duration-300 ${
       visible ? 'translate-y-0' : '-translate-y-full'
-    }`} style={{ paddingTop: '2rem' }}>
+    }`}>
       <div className="max-w-7xl mx-auto flex justify-between items-center">
         <div className="font-serif text-2xl font-bold text-black">
           Brand
