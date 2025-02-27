@@ -103,8 +103,9 @@ const Navbar: React.FC = () => {
   
   return (
     <>
-      <nav className={`w-full bg-[#f8f5f0] py-4 px-4 md:px-8 shadow-sm fixed top-0 z-50 transition-transform duration-300 ${
-        visible ? 'translate-y-0' : '-translate-y-full'
+      {/* Fixed navbar that appears when scrolling past hero */}
+      <nav className={`w-full bg-[#f8f5f0] py-4 px-4 md:px-8 shadow-sm fixed top-0 z-50 transition-all duration-300 ${
+        visible ? 'translate-y-0 opacity-100' : 'translate-y-full opacity-0'
       }`} style={{ height: '80px' }}>
         <div className="max-w-7xl mx-auto flex justify-between items-center">
           <div className="font-serif text-2xl font-bold text-black">
@@ -139,7 +140,7 @@ const Navbar: React.FC = () => {
             />
           </div>
 
-          {/* Mobile Menu Button */}
+          {/* Mobile Menu Button in header */}
           <button 
             className="lg:hidden flex items-center justify-center w-10 h-10 rounded-full hover:bg-gray-100 transition-colors duration-200"
             onClick={toggleMobileMenu}
@@ -180,6 +181,31 @@ const Navbar: React.FC = () => {
           </button>
         </div>
       </nav>
+
+      {/* Floating menu button that appears in hero section on mobile */}
+      <button 
+        className={`lg:hidden fixed top-6 right-4 z-40 flex items-center justify-center w-12 h-12 rounded-full bg-white/80 backdrop-blur-sm shadow-lg transition-all duration-300 ${
+          visible ? 'opacity-0 pointer-events-none' : 'opacity-100 pointer-events-auto'
+        }`}
+        onClick={toggleMobileMenu}
+        aria-label="Toggle menu"
+        aria-expanded={mobileMenuOpen}
+      >
+        <svg 
+          xmlns="http://www.w3.org/2000/svg" 
+          className="h-6 w-6" 
+          fill="none" 
+          viewBox="0 0 24 24" 
+          stroke="currentColor"
+        >
+          <path 
+            strokeLinecap="round" 
+            strokeLinejoin="round" 
+            strokeWidth={2} 
+            d="M4 6h16M4 12h16M4 18h16" 
+          />
+        </svg>
+      </button>
 
       {/* Mobile Menu Overlay */}
       <div 
