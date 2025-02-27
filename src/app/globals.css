@@ -65,7 +65,7 @@ nav {
 
 /* Animation for the bouncing arrow */
 @keyframes bounce {
-  0%, 100% {
+  from, to {
     transform: translateY(0);
   }
   50% {
