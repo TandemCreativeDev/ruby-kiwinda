@@ -24,7 +24,8 @@ export const Hero = ({ className = "" }: HeroProps) => {
           bgImageStyle={{
             objectFit: "cover",
             width: "100%",
-            height: "100%",
+            height: "100vh",
+            objectPosition: "center center"
           }}
           className="h-screen"
           renderLayer={(percentage) => (
