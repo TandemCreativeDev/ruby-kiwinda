@@ -109,12 +109,12 @@ const Gallery = ({ title, description, images, longDescription = "Lorem ipsum do
       
       <div className="flex flex-col md:flex-row">
         {/* Left side - Long description */}
-        <div className="md:w-1/4 px-8 mb-8 md:mb-0">
+        <div className="md:w-1/3 px-8 mb-8 md:mb-0">
           <p className="text-gray-700 prose">{longDescription}</p>
         </div>
         
         {/* Right side - Gallery */}
-        <div className="md:w-3/4 relative w-full overflow-visible">
+        <div className="md:w-2/3 relative w-full overflow-visible">
         {/* Gallery container */}
         <div 
           ref={galleryRef}
