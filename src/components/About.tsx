@@ -6,7 +6,7 @@ interface AboutProps {
 
 const About = ({ className = "" }: AboutProps) => {
   return (
-    <div id="about" className={`py-16 bg-gray-50 ${className}`} style={{ scrollMarginTop: '80px' }}>
+    <div id="about" className={`py-16 bg-gray-50 ${className}`} style={{ scrollMarginTop: '80px', paddingTop: '6rem' }}>
       <div className="container mx-auto px-8">
         <div className="flex flex-col md:flex-row gap-8">
           {/* Left side - Lorem text */}

@@ -72,7 +72,7 @@ const Navbar: React.FC = () => {
   return (
     <nav className={`w-full bg-[#f8f5f0] py-4 px-8 shadow-sm fixed top-0 z-50 transition-transform duration-300 ${
       visible ? 'translate-y-0' : '-translate-y-full'
-    }`}>
+    }`} style={{ height: '80px' }}>
       <div className="max-w-7xl mx-auto flex justify-between items-center">
         <div className="font-serif text-2xl font-bold text-black">
           Brand
