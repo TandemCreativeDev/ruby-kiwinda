@@ -42,19 +42,19 @@ const Contact = ({ className = "" }: ContactProps) => {
             </p>
 
             <div className="space-y-6 mt-12">
-              <div>
-                <h3 className="text-xl font-serif font-medium mb-2">Email</h3>
-                <p className="text-gray-700">hello@example.com</p>
+              <div className="group transition-all duration-300 p-4 -mx-4 rounded-lg hover:bg-white hover:shadow-md">
+                <h3 className="text-xl font-serif font-medium mb-2 group-hover:text-black">Email</h3>
+                <p className="text-gray-700 group-hover:text-black">hello@example.com</p>
               </div>
 
-              <div>
-                <h3 className="text-xl font-serif font-medium mb-2">Phone</h3>
-                <p className="text-gray-700">+1 (555) 123-4567</p>
+              <div className="group transition-all duration-300 p-4 -mx-4 rounded-lg hover:bg-white hover:shadow-md">
+                <h3 className="text-xl font-serif font-medium mb-2 group-hover:text-black">Phone</h3>
+                <p className="text-gray-700 group-hover:text-black">+1 (555) 123-4567</p>
               </div>
 
-              <div>
-                <h3 className="text-xl font-serif font-medium mb-2">Address</h3>
-                <p className="text-gray-700">
+              <div className="group transition-all duration-300 p-4 -mx-4 rounded-lg hover:bg-white hover:shadow-md">
+                <h3 className="text-xl font-serif font-medium mb-2 group-hover:text-black">Address</h3>
+                <p className="text-gray-700 group-hover:text-black">
                   123 Design Street
                   <br />
                   Creative City, CA 90210
@@ -80,7 +80,7 @@ const Contact = ({ className = "" }: ContactProps) => {
                     name="name"
                     value={formData.name}
                     onChange={handleChange}
-                    className="w-full p-3 bg-white border-b-2 border-gray-300 focus:border-black focus:outline-none font-serif text-black"
+                    className="w-full p-3 bg-white border-b-2 border-gray-300 focus:border-black focus:outline-none font-serif text-black transition-all duration-300 hover:border-gray-500"
                     required
                   />
                 </div>
@@ -98,7 +98,7 @@ const Contact = ({ className = "" }: ContactProps) => {
                     name="email"
                     value={formData.email}
                     onChange={handleChange}
-                    className="w-full p-3 bg-white border-b-2 border-gray-300 focus:border-black focus:outline-none font-serif text-black"
+                    className="w-full p-3 bg-white border-b-2 border-gray-300 focus:border-black focus:outline-none font-serif text-black transition-all duration-300 hover:border-gray-500"
                     required
                   />
                 </div>
@@ -116,7 +116,7 @@ const Contact = ({ className = "" }: ContactProps) => {
                     value={formData.message}
                     onChange={handleChange}
                     rows={5}
-                    className="w-full p-3 bg-white border-b-2 border-gray-300 focus:border-black focus:outline-none font-serif text-black resize-none"
+                    className="w-full p-3 bg-white border-b-2 border-gray-300 focus:border-black focus:outline-none font-serif text-black resize-none transition-all duration-300 hover:border-gray-500"
                     required
                   ></textarea>
                 </div>
@@ -124,9 +124,10 @@ const Contact = ({ className = "" }: ContactProps) => {
 
               <Button
                 variant="outline"
-                className="mt-8 px-8 py-3 border-2 border-black text-black hover:bg-black hover:text-white transition-colors duration-300 font-serif text-lg"
+                className="mt-8 px-8 py-3 border-2 border-black text-black hover:bg-black hover:text-white transition-all duration-300 font-serif text-lg relative overflow-hidden group"
               >
-                Send Message
+                <span className="relative z-10 group-hover:text-white transition-colors duration-300">Send Message</span>
+                <span className="absolute inset-0 bg-black transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
               </Button>
             </form>
           </div>
