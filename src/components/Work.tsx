@@ -252,7 +252,7 @@ const Work = ({ className = "" }: WorkProps) => {
   ];
 
   return (
-    <section className={`py-8 ${className} text-gray-900`}>
+    <section id="work" className={`py-8 ${className} text-gray-900`} style={{ scrollMarginTop: '80px' }}>
       <div className="w-full overflow-hidden">
         {galleries.map((gallery, index) => (
           <Gallery 
