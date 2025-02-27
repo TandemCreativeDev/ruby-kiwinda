@@ -24,9 +24,7 @@ export default function Home() {
         </section>
         
         {/* Contact Section */}
-        <section id="contact">
-          <Contact />
-        </section>
+        <Contact />
         
         {/* Footer */}
         <Footer />
