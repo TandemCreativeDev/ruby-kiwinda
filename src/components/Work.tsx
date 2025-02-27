@@ -78,10 +78,10 @@ const Gallery = ({ title, description, images }: GalleryProps) => {
 
   return (
     <div className="mb-24">
-      <h2 className="text-3xl md:text-4xl font-bold mb-8 text-center">
+      <h2 className="text-3xl md:text-4xl font-bold mb-8 text-right pr-[30vw]">
         {title}
       </h2>
-      <p className="text-center text-lg mb-12 max-w-3xl mx-auto">
+      <p className="text-right text-lg mb-12 max-w-3xl ml-auto mr-[30vw]">
         {description}
       </p>
       
@@ -90,7 +90,8 @@ const Gallery = ({ title, description, images }: GalleryProps) => {
         style={{ 
           maxWidth: "100vw",
           margin: "0 auto",
-          marginLeft: "0"
+          marginLeft: "auto",
+          marginRight: "0"
         }}
       >
         <div 
@@ -113,7 +114,7 @@ const Gallery = ({ title, description, images }: GalleryProps) => {
           onTouchMove={handleTouchMove}
           onTouchEnd={handleTouchEnd}
         >
-          <div className="flex space-x-8 md:space-x-10 pl-8 pr-[80vw]">
+          <div className="flex space-x-8 md:space-x-10 pl-[50vw] pr-[30vw]">
             {isLoading ? (
               // Loading skeletons
               Array.from({ length: 4 }).map((_, index) => (
@@ -155,6 +156,7 @@ const Gallery = ({ title, description, images }: GalleryProps) => {
         </div>
         
         {/* Scroll indicators */}
+        <div className="absolute left-0 top-1/2 transform -translate-y-1/2 bg-gradient-to-r from-white via-white to-transparent w-[50vw] h-full opacity-90 pointer-events-none"></div>
         <div className="absolute right-0 top-1/2 transform -translate-y-1/2 bg-gradient-to-l from-white via-white to-transparent w-24 h-full opacity-75 pointer-events-none"></div>
       </div>
       
@@ -209,7 +211,7 @@ const Work = ({ className = "" }: WorkProps) => {
 
   return (
     <section className={`py-16 ${className} text-gray-900`}>
-      <div className="w-full px-0 md:px-0 lg:px-0 overflow-hidden">
+      <div className="w-full px-0 md:px-0 lg:px-0 overflow-hidden relative">
         {galleries.map((gallery, index) => (
           <Gallery 
             key={index}
