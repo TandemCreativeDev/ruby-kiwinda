@@ -19,7 +19,7 @@ export const Hero = ({ className = "" }: HeroProps) => {
     <div className={`relative w-full h-screen ${className}`}>
       {isMounted && (
         <Parallax
-          bgImage="/hero.gif"
+          bgImage="/images/hero-bg.jpg"
           strength={300}
           bgImageStyle={{
             objectFit: "cover",
@@ -34,6 +34,7 @@ export const Hero = ({ className = "" }: HeroProps) => {
                 width: "100%",
                 height: "100%",
                 opacity: Math.min(1, percentage * 1.5),
+                backgroundColor: "rgba(0, 0, 0, 0.4)", // Add a semi-transparent overlay
               }}
             />
           )}
