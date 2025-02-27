@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 interface AboutProps {
   className?: string;
@@ -12,13 +12,15 @@ const About = ({ className = "" }: AboutProps) => {
           {/* Left side - Lorem text */}
           <div className="md:w-1/2">
             <p className="text-3xl font-serif leading-relaxed text-black">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in dui mauris. Vivamus hendrerit arcu sed erat molestie vehicula. Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitor.
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in
+              dui mauris. Vivamus hendrerit arcu sed erat molestie vehicula. Sed
+              auctor neque eu tellus rhoncus ut eleifend nibh porttitor.
             </p>
           </div>
-          
+
           {/* Right side - Blue square */}
           <div className="md:w-1/2 flex justify-center items-center">
-            <div className="w-full aspect-square bg-blue-500 shadow-lg" style={{ minHeight: "300px" }}></div>
+            <div className="w-full  bg-blue-500 shadow-lg h-96"></div>
           </div>
         </div>
       </div>
