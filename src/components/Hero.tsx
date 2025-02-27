@@ -1,3 +1,5 @@
+'use client'
+
 import { Parallax } from 'react-parallax';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';

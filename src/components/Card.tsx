@@ -1,3 +1,5 @@
+'use client'
+
 import React from 'react';
 
 interface CardProps {
@@ -6,7 +8,7 @@ interface CardProps {
   className?: string;
 }
 
-const Card: React.FC<CardProps> = ({ 
+export const Card: React.FC<CardProps> = ({ 
   children, 
   title,
   className = '' 
