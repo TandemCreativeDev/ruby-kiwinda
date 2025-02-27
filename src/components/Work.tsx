@@ -33,8 +33,8 @@ const Gallery = ({ title, description, images }: GalleryProps) => {
   // Set initial scroll position to ensure first image is visible
   useEffect(() => {
     if (galleryRef.current && !isLoading) {
-      // Set a positive initial scroll offset to ensure the first image is properly positioned
-      galleryRef.current.scrollLeft = 80; // Positive value to push content to the left
+      // Reset scroll position to ensure the first image is properly positioned
+      galleryRef.current.scrollLeft = 0;
     }
   }, [isLoading]);
   
@@ -97,7 +97,7 @@ const Gallery = ({ title, description, images }: GalleryProps) => {
       
       <div className="relative w-full overflow-visible">
         {/* Left whitespace overlay */}
-        <div className="absolute left-0 top-0 bg-white w-[45%] h-full z-10"></div>
+        <div className="absolute left-0 top-0 bg-white w-[40%] h-full z-10"></div>
         
         {/* Gallery container */}
         <div 
@@ -120,7 +120,7 @@ const Gallery = ({ title, description, images }: GalleryProps) => {
           onTouchMove={handleTouchMove}
           onTouchEnd={handleTouchEnd}
         >
-          <div className="flex space-x-8 pl-[45%] pr-[30%]">
+          <div className="flex space-x-8 pl-[40%] pr-[30%]">
             {isLoading ? (
               // Loading skeletons
               Array.from({ length: 4 }).map((_, index) => (
