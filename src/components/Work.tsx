@@ -23,12 +23,10 @@ const Gallery = ({ title, description, images, longDescription = "Lorem ipsum do
   const galleryRef = useRef<HTMLDivElement>(null);
   
   useEffect(() => {
-    // Simulate loading delay
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, 500);
+    // Set loading to false immediately to show images
+    setIsLoading(false);
     
-    return () => clearTimeout(timer);
+    return () => {};
   }, []);
   
   // Set initial scroll position to ensure first image is visible
@@ -99,9 +97,11 @@ const Gallery = ({ title, description, images, longDescription = "Lorem ipsum do
   return (
     <div className="mb-24">
       <div className="w-full pr-8 relative">
-        <h2 className="text-3xl md:text-4xl font-bold mb-8 text-right pr-[5%] relative inline-block">
-          <span className="relative z-10">{title}</span>
-          <span className="absolute bottom-0 left-0 w-full h-[8px] bg-yellow-200 opacity-50 -z-10 transform -rotate-1"></span>
+        <h2 className="text-3xl md:text-4xl font-bold mb-8 text-right pr-[5%]">
+          <span className="relative inline-block">
+            <span className="relative z-10">{title}</span>
+            <span className="absolute bottom-0 left-0 w-full h-[8px] bg-yellow-200 opacity-50 -z-10 transform -rotate-1"></span>
+          </span>
         </h2>
         <p className="text-right text-lg mb-12 max-w-3xl ml-auto pr-[5%]">
           {description}
@@ -139,7 +139,7 @@ const Gallery = ({ title, description, images, longDescription = "Lorem ipsum do
           onTouchMove={handleTouchMove}
           onTouchEnd={handleTouchEnd}
         >
-          <div className="flex space-x-8 pl-[30%] pr-[30%]">
+          <div className="flex space-x-8 pl-8 pr-8">
             {isLoading ? (
               // Loading skeletons
               Array.from({ length: 4 }).map((_, index) => (
@@ -168,7 +168,7 @@ const Gallery = ({ title, description, images, longDescription = "Lorem ipsum do
                       fill
                       className="object-cover transition-transform duration-700 group-hover:scale-110"
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                      priority={index < 2}
+                      priority={true}
                       onError={(e) => {
                         console.error(`Failed to load image: ${src}`);
                       }}
