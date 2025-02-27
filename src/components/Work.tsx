@@ -26,8 +26,14 @@ const Gallery = ({ title, description, images, longDescription = "Lorem ipsum do
     // Set loading to false immediately to show images
     setIsLoading(false);
     
+    // Preload images
+    images.forEach(src => {
+      const img = new Image();
+      img.src = src;
+    });
+    
     return () => {};
-  }, []);
+  }, [images]);
   
   // Set initial scroll position to ensure first image is visible
   useEffect(() => {
@@ -169,11 +175,12 @@ const Gallery = ({ title, description, images, longDescription = "Lorem ipsum do
                       className="object-cover transition-transform duration-700 group-hover:scale-110"
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                       priority={true}
+                      loading="eager"
                       onError={(e) => {
                         console.error(`Failed to load image: ${src}`);
                       }}
                     />
-                    <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition-all duration-300 flex items-center justify-center">
+                    <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition-all duration-300 flex items-center justify-center pointer-events-none">
                       <div className="transform translate-y-10 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
                         <div className="w-12 h-12 rounded-full bg-white bg-opacity-80 flex items-center justify-center">
                           <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
