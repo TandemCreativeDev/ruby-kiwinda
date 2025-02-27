@@ -16,7 +16,7 @@ export const Hero = ({ className = "" }: HeroProps) => {
   }, []);
 
   return (
-    <div className={`relative w-full h-screen ${className}`} style={{ marginTop: 0 }}>
+    <div className={`relative w-full h-screen ${className}`} style={{ marginTop: 0, height: '100vh' }}>
       {isMounted && (
         <Parallax
           bgImage="/hero.gif"

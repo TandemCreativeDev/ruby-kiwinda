@@ -39,4 +39,12 @@ body::before {
 * {
   margin-top: 0;
   padding-top: 0;
+  box-sizing: border-box;
+}
+
+/* Ensure the hero section takes full height */
+#home {
+  height: 100vh;
+  margin-top: 0;
+  padding-top: 0;
 }

@@ -5,7 +5,7 @@ export default function Home() {
   return (
     <div className="flex flex-col min-h-screen">
       <Navbar />
-      <div className="pt-24 font-[family-name:var(--font-geist-sans)]"> {/* Added padding-top to account for fixed navbar */}
+      <div className="font-[family-name:var(--font-geist-sans)]">
         
         {/* Home Section with Hero */}
         <section id="home">
