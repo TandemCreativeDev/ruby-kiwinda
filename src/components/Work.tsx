@@ -33,8 +33,19 @@ const Gallery = ({ title, description, images }: GalleryProps) => {
   // Set initial scroll position to ensure first image is visible
   useEffect(() => {
     if (galleryRef.current && !isLoading) {
-      // Reset scroll position to ensure the first image is properly positioned
+      // Set a specific initial scroll position to ensure the first image is visible
       galleryRef.current.scrollLeft = 0;
+      
+      // Prevent the gallery from scrolling back to its default position
+      const preventSnapBack = () => {
+        if (galleryRef.current) {
+          galleryRef.current.scrollLeft = 0;
+        }
+      };
+      
+      // Apply the scroll position after a short delay to ensure it sticks
+      const timer = setTimeout(preventSnapBack, 100);
+      return () => clearTimeout(timer);
     }
   }, [isLoading]);
   
@@ -97,7 +108,7 @@ const Gallery = ({ title, description, images }: GalleryProps) => {
       
       <div className="relative w-full overflow-visible">
         {/* Left whitespace overlay */}
-        <div className="absolute left-0 top-0 bg-white w-[40%] h-full z-10"></div>
+        <div className="absolute left-0 top-0 bg-white w-[30%] h-full z-10"></div>
         
         {/* Gallery container */}
         <div 
@@ -109,8 +120,7 @@ const Gallery = ({ title, description, images }: GalleryProps) => {
           style={{
             scrollbarWidth: "none",
             msOverflowStyle: "none",
-            WebkitOverflowScrolling: "touch",
-            scrollSnapType: "x mandatory"
+            WebkitOverflowScrolling: "touch"
           }}
           onMouseDown={handleMouseDown}
           onMouseUp={handleMouseUp}
@@ -120,7 +130,7 @@ const Gallery = ({ title, description, images }: GalleryProps) => {
           onTouchMove={handleTouchMove}
           onTouchEnd={handleTouchEnd}
         >
-          <div className="flex space-x-8 pl-[40%] pr-[30%]">
+          <div className="flex space-x-8 pl-[30%] pr-[30%]">
             {isLoading ? (
               // Loading skeletons
               Array.from({ length: 4 }).map((_, index) => (
@@ -134,7 +144,7 @@ const Gallery = ({ title, description, images }: GalleryProps) => {
                 <div 
                   key={index} 
                   className="flex-shrink-0 w-[40vw] max-w-[450px] min-w-[280px] h-[30vw] max-h-[350px] min-h-[200px] relative rounded-lg overflow-hidden shadow-lg transition-all duration-300 hover:shadow-xl"
-                  style={{ scrollSnapAlign: "start" }}
+                  style={{ scrollSnapAlign: "none" }}
                 >
                   <div 
                     onClick={() => {
