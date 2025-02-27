@@ -115,9 +115,6 @@ const Gallery = ({ title, description, images, longDescription = "Lorem ipsum do
         
         {/* Right side - Gallery */}
         <div className="md:w-3/4 relative w-full overflow-visible">
-        {/* Left whitespace overlay */}
-        <div className="absolute left-0 top-0 bg-white w-[30%] h-full z-10"></div>
-        
         {/* Gallery container */}
         <div 
           ref={galleryRef}
