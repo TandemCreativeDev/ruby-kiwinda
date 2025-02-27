@@ -13,12 +13,12 @@ export default function Home() {
         </section>
         
         {/* About Section - Placeholder for future content */}
-        <section id="about" className="min-h-screen bg-gray-50">
+        <section id="about" className="py-8 bg-gray-50">
           {/* About content will be added later */}
         </section>
         
         {/* Work Section */}
-        <section id="work" className="min-h-screen flex items-center justify-center p-0 bg-gray-50 text-gray-900">
+        <section id="work" className="flex items-center justify-center p-0 bg-gray-50 text-gray-900">
           <div className="w-full">
             <Work />
           </div>

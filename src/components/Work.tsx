@@ -233,7 +233,7 @@ const Work = ({ className = "" }: WorkProps) => {
   ];
 
   return (
-    <section className={`py-16 ${className} text-gray-900`}>
+    <section className={`py-8 ${className} text-gray-900`}>
       <div className="w-full overflow-hidden">
         {galleries.map((gallery, index) => (
           <Gallery 
