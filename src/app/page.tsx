@@ -7,21 +7,13 @@ export default function Home() {
       <div className="font-[family-name:var(--font-geist-sans)]">
         
         {/* Home Section with Hero */}
-        <section id="home">
-          <Hero />
-        </section>
+        <Hero />
         
         {/* About Section */}
-        <section id="about">
-          <About />
-        </section>
+        <About />
         
         {/* Work Section */}
-        <section id="work" className="flex items-center justify-center p-0 bg-gray-50 text-gray-900">
-          <div className="w-full">
-            <Work />
-          </div>
-        </section>
+        <Work />
         
         {/* Contact Section */}
         <Contact />

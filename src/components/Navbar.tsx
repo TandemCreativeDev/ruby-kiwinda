@@ -16,7 +16,7 @@ const NavItem: React.FC<NavItemProps> = ({ to, label, active = false, setActive 
       to={to}
       spy={true}
       smooth={true}
-      offset={-80} // Adjusted offset to account for navbar height
+      offset={-100} // Increased negative offset to ensure sections appear below navbar
       duration={500}
       onSetActive={() => setActive(to)}
       className={`

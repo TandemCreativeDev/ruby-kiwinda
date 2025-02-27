@@ -27,7 +27,7 @@ const Contact = ({ className = "" }: ContactProps) => {
   };
 
   return (
-    <div id="contact" className={`pt-32 pb-24 bg-[#f8f5f0] ${className}`}>
+    <div id="contact" className={`pt-32 pb-24 bg-[#f8f5f0] ${className}`} style={{ scrollMarginTop: '100px' }}>
       <div className="container mx-auto px-8 max-w-5xl">
         <div className="flex flex-col md:flex-row gap-16">
           {/* Left side - Contact information */}
