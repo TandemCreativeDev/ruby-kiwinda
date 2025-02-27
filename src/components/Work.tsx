@@ -8,9 +8,10 @@ interface GalleryProps {
   title: string;
   description: string;
   images: string[];
+  longDescription?: string;
 }
 
-const Gallery = ({ title, description, images }: GalleryProps) => {
+const Gallery = ({ title, description, images, longDescription = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in dui mauris. Vivamus hendrerit arcu sed erat molestie vehicula. Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitor. Ut in nulla enim. Phasellus molestie magna non est bibendum non venenatis nisl tempor. Suspendisse dictum feugiat nisl ut dapibus. Mauris iaculis porttitor posuere. Praesent id metus massa, ut blandit odio. Proin quis tortor orci. Etiam at risus et justo dignissim congue. Donec congue lacinia dui, a porttitor lectus condimentum laoreet." }: GalleryProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const [photoIndex, setPhotoIndex] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
@@ -106,7 +107,14 @@ const Gallery = ({ title, description, images }: GalleryProps) => {
         </p>
       </div>
       
-      <div className="relative w-full overflow-visible">
+      <div className="flex flex-col md:flex-row">
+        {/* Left side - Long description */}
+        <div className="md:w-1/4 px-8 mb-8 md:mb-0">
+          <p className="text-gray-700 prose">{longDescription}</p>
+        </div>
+        
+        {/* Right side - Gallery */}
+        <div className="md:w-3/4 relative w-full overflow-visible">
         {/* Left whitespace overlay */}
         <div className="absolute left-0 top-0 bg-white w-[30%] h-full z-10"></div>
         
@@ -173,6 +181,7 @@ const Gallery = ({ title, description, images }: GalleryProps) => {
         
         {/* Right fade effect */}
         <div className="absolute right-0 top-0 bg-gradient-to-l from-white to-transparent w-[15%] h-full pointer-events-none"></div>
+        </div>
       </div>
       
       <div className="text-right mt-8 pr-[5%]">
@@ -205,6 +214,7 @@ const Work = ({ className = "" }: WorkProps) => {
     {
       title: "Black Panthers",
       description: "A collection of iconic Black Panthers imagery showcasing the movement's powerful visual legacy.",
+      longDescription: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in dui mauris. Vivamus hendrerit arcu sed erat molestie vehicula. Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitor. Ut in nulla enim. Phasellus molestie magna non est bibendum non venenatis nisl tempor. Suspendisse dictum feugiat nisl ut dapibus. Mauris iaculis porttitor posuere. Praesent id metus massa, ut blandit odio.",
       images: [
         "/black-panthers/Black Panthers 1920.jpeg",
         "/black-panthers/Black Panthers 1920 (1).jpeg",
@@ -215,6 +225,7 @@ const Work = ({ className = "" }: WorkProps) => {
     {
       title: "Playing Cards",
       description: "Custom designed playing cards featuring unique illustrations and artistic elements.",
+      longDescription: "Proin quis tortor orci. Etiam at risus et justo dignissim congue. Donec congue lacinia dui, a porttitor lectus condimentum laoreet. Nunc eu ullamcorper orci. Quisque eget odio ac lectus vestibulum faucibus eget in metus. In pellentesque faucibus vestibulum. Nulla at nulla justo, eget luctus tortor. Nulla facilisi. Duis aliquet egestas purus in blandit.",
       images: [
         "/playing-cards/Playing Cards Illustration.JPG",
         "/playing-cards/Playing Card 02.PNG",
