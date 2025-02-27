@@ -1,31 +1,60 @@
 import { Parallax } from 'react-parallax';
 import Image from 'next/image';
+import { useEffect, useState } from 'react';
 
 interface HeroProps {
   className?: string;
 }
 
 export const Hero = ({ className = '' }: HeroProps) => {
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
   return (
     <div className={`relative w-full h-screen ${className}`}>
-      <Parallax
-        bgImage="/hero.gif"
-        strength={500}
-        bgImageStyle={{ objectFit: 'cover' }}
-        className="h-screen"
-      >
-        <div className="flex items-center justify-center h-screen">
-          <div className="relative w-64 h-64 md:w-80 md:h-80">
-            <Image
-              src="/logo-white.png"
-              alt="Logo"
-              priority
-              fill
-              className="object-contain"
+      {isMounted && (
+        <Parallax
+          bgImage="/hero.gif"
+          strength={300}
+          bgImageStyle={{ 
+            objectFit: 'cover',
+            width: '100%',
+            height: '100%'
+          }}
+          className="h-screen"
+          renderLayer={(percentage) => (
+            <div
+              style={{
+                position: 'absolute',
+                width: '100%',
+                height: '100%',
+                opacity: Math.min(1, percentage * 1.5)
+              }}
             />
+          )}
+        >
+          <div 
+            className="flex items-center justify-center h-screen"
+            style={{ 
+              position: 'relative',
+              zIndex: 2
+            }}
+          >
+            <div className="relative w-64 h-64 md:w-96 md:h-96 animate-pulse-slow">
+              <Image
+                src="/logo-white.png"
+                alt="Logo"
+                priority
+                fill
+                className="object-contain drop-shadow-lg"
+              />
+            </div>
           </div>
-        </div>
-      </Parallax>
+        </Parallax>
+      )}
     </div>
   );
 };
