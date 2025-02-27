@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { Navbar, Card, Button, ParallaxSection, Work } from "@/components";
+import { Navbar, Card, Button, ParallaxSection, Work, Hero } from "@/components";
 
 export default function Home() {
   return (
@@ -7,50 +7,10 @@ export default function Home() {
       <Navbar />
       <div className="pt-24 font-[family-name:var(--font-geist-sans)]"> {/* Added padding-top to account for fixed navbar */}
         
-        {/* Home Section with Parallax */}
-        <ParallaxSection 
-          id="home" 
-          bgImage="/images/hero-bg.jpg" 
-          strength={500}
-          overlayColor="rgba(0, 0, 0, 0.3)"
-        >
-          <div className="text-center text-white">
-            <h1 className="text-4xl md:text-6xl font-bold mb-6">Welcome to Our Website</h1>
-            <p className="text-xl mb-8">A modern Next.js application with smooth scrolling and parallax effects</p>
-            
-            <div className="flex gap-4 items-center justify-center flex-col sm:flex-row">
-              <Image
-                className="invert mb-8"
-                src="/next.svg"
-                alt="Next.js logo"
-                width={180}
-                height={38}
-                priority
-              />
-              <Button 
-                variant="primary" 
-                size="large"
-                className="flex items-center gap-2"
-              >
-                <Image
-                  className="invert"
-                  src="/vercel.svg"
-                  alt="Vercel logomark"
-                  width={20}
-                  height={20}
-                />
-                Get Started
-              </Button>
-              <Button 
-                variant="outline" 
-                size="large"
-                className="text-white border-white hover:bg-white hover:text-black"
-              >
-                Learn More
-              </Button>
-            </div>
-          </div>
-        </ParallaxSection>
+        {/* Home Section with Hero */}
+        <section id="home">
+          <Hero />
+        </section>
         
         {/* About Section */}
         <section id="about" className="min-h-screen flex items-center justify-center p-8 bg-gray-50 text-gray-900">
