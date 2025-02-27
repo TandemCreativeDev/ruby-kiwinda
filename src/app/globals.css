@@ -29,3 +29,14 @@ body {
 html {
   height: 100%;
 }
+
+/* Ensure fixed elements don't create space in the layout */
+body::before {
+  content: none;
+}
+
+/* Reset any potential spacing issues */
+* {
+  margin-top: 0;
+  padding-top: 0;
+}
