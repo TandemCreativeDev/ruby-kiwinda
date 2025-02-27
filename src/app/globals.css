@@ -45,12 +45,20 @@ body::before {
 /* Ensure the hero section takes full height */
 #home {
   height: 100vh;
-  margin-top: 0;
-  padding-top: 0;
+  margin: 0;
+  padding: 0;
 }
 
 /* Add padding to sections to account for navbar */
 section:not(#home) {
   padding-top: 80px; /* Adjust based on navbar height */
   scroll-margin-top: 80px; /* For scroll-to functionality */
+}
+
+/* Fix for navbar */
+nav {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
 }
