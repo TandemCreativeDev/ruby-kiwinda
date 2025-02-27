@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { Link as ScrollLink, Events } from 'react-scroll';
+import { usePathname } from 'next/navigation';
 
 interface NavItemProps {
   to: string;
@@ -9,9 +10,10 @@ interface NavItemProps {
   active?: boolean;
   setActive: (item: string) => void;
   onClick?: () => void;
+  className?: string;
 }
 
-const NavItem: React.FC<NavItemProps> = ({ to, label, active = false, setActive, onClick }) => {
+const NavItem: React.FC<NavItemProps> = ({ to, label, active = false, setActive, onClick, className = '' }) => {
   return (
     <ScrollLink 
       to={to}
@@ -29,6 +31,7 @@ const NavItem: React.FC<NavItemProps> = ({ to, label, active = false, setActive,
         after:w-0 after:bg-black after:transition-all after:duration-300
         hover:after:w-full
         ${active ? 'after:w-full' : ''}
+        ${className}
       `}
     >
       {label}
@@ -40,6 +43,19 @@ const Navbar: React.FC = () => {
   const [activeItem, setActiveItem] = useState('home');
   const [visible, setVisible] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const pathname = usePathname();
+  
+  // Prevent body scroll when mobile menu is open
+  useEffect(() => {
+    if (mobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [mobileMenuOpen]);
   
   useEffect(() => {
     // Register events to update active state when scrolling
@@ -72,6 +88,11 @@ const Navbar: React.FC = () => {
     };
   }, []);
 
+  // Close mobile menu when route changes
+  useEffect(() => {
+    setMobileMenuOpen(false);
+  }, [pathname]);
+
   const toggleMobileMenu = () => {
     setMobileMenuOpen(!mobileMenuOpen);
   };
@@ -81,87 +102,85 @@ const Navbar: React.FC = () => {
   };
   
   return (
-    <nav className={`w-full bg-[#f8f5f0] py-4 px-4 md:px-8 shadow-sm fixed top-0 z-50 transition-transform duration-300 ${
-      visible ? 'translate-y-0' : '-translate-y-full'
-    }`} style={{ height: '80px' }}>
-      <div className="max-w-7xl mx-auto flex justify-between items-center">
-        <div className="font-serif text-2xl font-bold text-black">
-          Brand
-        </div>
-        
-        {/* Desktop Menu */}
-        <div className="hidden lg:flex space-x-2">
-          <NavItem 
-            to="home" 
-            label="Home" 
-            active={activeItem === 'home'} 
-            setActive={setActiveItem}
-          />
-          <NavItem 
-            to="about" 
-            label="About" 
-            active={activeItem === 'about'} 
-            setActive={setActiveItem}
-          />
-          <NavItem 
-            to="work" 
-            label="Work" 
-            active={activeItem === 'work'} 
-            setActive={setActiveItem}
-          />
-          <NavItem 
-            to="contact" 
-            label="Get in Touch" 
-            active={activeItem === 'contact'} 
-            setActive={setActiveItem}
-          />
-        </div>
+    <>
+      <nav className={`w-full bg-[#f8f5f0] py-4 px-4 md:px-8 shadow-sm fixed top-0 z-50 transition-transform duration-300 ${
+        visible ? 'translate-y-0' : '-translate-y-full'
+      }`} style={{ height: '80px' }}>
+        <div className="max-w-7xl mx-auto flex justify-between items-center">
+          <div className="font-serif text-2xl font-bold text-black">
+            Brand
+          </div>
+          
+          {/* Desktop Menu */}
+          <div className="hidden lg:flex space-x-2">
+            <NavItem 
+              to="home" 
+              label="Home" 
+              active={activeItem === 'home'} 
+              setActive={setActiveItem}
+            />
+            <NavItem 
+              to="about" 
+              label="About" 
+              active={activeItem === 'about'} 
+              setActive={setActiveItem}
+            />
+            <NavItem 
+              to="work" 
+              label="Work" 
+              active={activeItem === 'work'} 
+              setActive={setActiveItem}
+            />
+            <NavItem 
+              to="contact" 
+              label="Get in Touch" 
+              active={activeItem === 'contact'} 
+              setActive={setActiveItem}
+            />
+          </div>
 
-        {/* Mobile Menu Button */}
-        <button 
-          className="lg:hidden flex items-center justify-center w-10 h-10 rounded-full hover:bg-gray-100 transition-colors duration-200"
-          onClick={toggleMobileMenu}
-          aria-label="Toggle menu"
-        >
-          <svg 
-            xmlns="http://www.w3.org/2000/svg" 
-            className="h-6 w-6" 
-            fill="none" 
-            viewBox="0 0 24 24" 
-            stroke="currentColor"
+          {/* Mobile Menu Button */}
+          <button 
+            className="lg:hidden flex items-center justify-center w-10 h-10 rounded-full hover:bg-gray-100 transition-colors duration-200"
+            onClick={toggleMobileMenu}
+            aria-label="Toggle menu"
+            aria-expanded={mobileMenuOpen}
           >
-            {mobileMenuOpen ? (
-              <path 
-                strokeLinecap="round" 
-                strokeLinejoin="round" 
-                strokeWidth={2} 
-                d="M6 18L18 6M6 6l12 12" 
-              />
-            ) : (
+            <svg 
+              xmlns="http://www.w3.org/2000/svg" 
+              className="h-6 w-6" 
+              fill="none" 
+              viewBox="0 0 24 24" 
+              stroke="currentColor"
+            >
               <path 
                 strokeLinecap="round" 
                 strokeLinejoin="round" 
                 strokeWidth={2} 
                 d="M4 6h16M4 12h16M4 18h16" 
               />
-            )}
-          </svg>
-        </button>
-      </div>
+            </svg>
+          </button>
+        </div>
+      </nav>
 
       {/* Mobile Menu Overlay */}
       <div 
-        className={`fixed inset-0 bg-black bg-opacity-50 z-40 transition-opacity duration-300 lg:hidden ${
+        className={`fixed inset-0 bg-black bg-opacity-50 z-[60] transition-opacity duration-300 ${
           mobileMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
         }`}
         onClick={closeMobileMenu}
+        aria-hidden="true"
       ></div>
 
       {/* Mobile Menu Panel */}
       <div 
-        className={`fixed right-0 top-0 h-full w-64 bg-white shadow-xl z-50 transform transition-transform duration-300 ease-in-out lg:hidden ${
+        className={`fixed right-0 top-0 h-full w-[80%] max-w-xs bg-white shadow-xl z-[70] transform transition-transform duration-300 ease-in-out ${
           mobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
         }`}
+        aria-label="Mobile menu"
+        role="dialog"
+        aria-modal="true"
       >
         <div className="flex justify-end p-4">
           <button 
@@ -185,13 +204,14 @@ const Navbar: React.FC = () => {
             </svg>
           </button>
         </div>
-        <div className="flex flex-col items-center space-y-6 mt-8">
+        <div className="flex flex-col items-start space-y-6 mt-8 px-6">
           <NavItem 
             to="home" 
             label="Home" 
             active={activeItem === 'home'} 
             setActive={setActiveItem}
             onClick={closeMobileMenu}
+            className="text-xl w-full"
           />
           <NavItem 
             to="about" 
@@ -199,6 +219,7 @@ const Navbar: React.FC = () => {
             active={activeItem === 'about'} 
             setActive={setActiveItem}
             onClick={closeMobileMenu}
+            className="text-xl w-full"
           />
           <NavItem 
             to="work" 
@@ -206,6 +227,7 @@ const Navbar: React.FC = () => {
             active={activeItem === 'work'} 
             setActive={setActiveItem}
             onClick={closeMobileMenu}
+            className="text-xl w-full"
           />
           <NavItem 
             to="contact" 
@@ -213,10 +235,11 @@ const Navbar: React.FC = () => {
             active={activeItem === 'contact'} 
             setActive={setActiveItem}
             onClick={closeMobileMenu}
+            className="text-xl w-full"
           />
         </div>
       </div>
-    </nav>
+    </>
   );
 };
 
