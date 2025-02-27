@@ -33,8 +33,8 @@ const Gallery = ({ title, description, images }: GalleryProps) => {
   // Set initial scroll position to ensure first image is visible
   useEffect(() => {
     if (galleryRef.current && !isLoading) {
-      // Reset scroll position to 0 to ensure the first image is properly positioned
-      galleryRef.current.scrollLeft = 0;
+      // Set a small initial scroll offset to ensure the first image is properly positioned
+      galleryRef.current.scrollLeft = -20; // Negative value to pull content to the right
     }
   }, [isLoading]);
   
@@ -120,7 +120,7 @@ const Gallery = ({ title, description, images }: GalleryProps) => {
           onTouchMove={handleTouchMove}
           onTouchEnd={handleTouchEnd}
         >
-          <div className="flex space-x-8 pl-[45%] pr-[30%]">
+          <div className="flex space-x-8 pl-[50%] pr-[30%]">
             {isLoading ? (
               // Loading skeletons
               Array.from({ length: 4 }).map((_, index) => (
