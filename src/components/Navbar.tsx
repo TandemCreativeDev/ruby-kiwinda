@@ -90,7 +90,7 @@ const Navbar: React.FC = () => {
         </div>
         
         {/* Desktop Menu */}
-        <div className="hidden md:flex space-x-2">
+        <div className="hidden lg:flex space-x-2">
           <NavItem 
             to="home" 
             label="Home" 
@@ -119,7 +119,7 @@ const Navbar: React.FC = () => {
 
         {/* Mobile Menu Button */}
         <button 
-          className="md:hidden flex items-center"
+          className="lg:hidden flex items-center justify-center w-10 h-10 rounded-full hover:bg-gray-100 transition-colors duration-200"
           onClick={toggleMobileMenu}
           aria-label="Toggle menu"
         >
@@ -151,7 +151,7 @@ const Navbar: React.FC = () => {
 
       {/* Mobile Menu Overlay */}
       <div 
-        className={`fixed inset-0 bg-black bg-opacity-50 z-40 transition-opacity duration-300 md:hidden ${
+        className={`fixed inset-0 bg-black bg-opacity-50 z-40 transition-opacity duration-300 lg:hidden ${
           mobileMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
         }`}
         onClick={closeMobileMenu}
@@ -159,7 +159,7 @@ const Navbar: React.FC = () => {
 
       {/* Mobile Menu Panel */}
       <div 
-        className={`fixed right-0 top-0 h-full w-64 bg-white shadow-xl z-50 transform transition-transform duration-300 ease-in-out md:hidden ${
+        className={`fixed right-0 top-0 h-full w-64 bg-white shadow-xl z-50 transform transition-transform duration-300 ease-in-out lg:hidden ${
           mobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
         }`}
       >
@@ -167,6 +167,7 @@ const Navbar: React.FC = () => {
           <button 
             onClick={closeMobileMenu}
             aria-label="Close menu"
+            className="w-10 h-10 flex items-center justify-center rounded-full hover:bg-gray-100 transition-colors duration-200"
           >
             <svg 
               xmlns="http://www.w3.org/2000/svg" 
