@@ -73,27 +73,12 @@ export default function Home() {
           </div>
         </section>
         
-        {/* Work Section with Parallax */}
-        <ParallaxSection 
-          id="work" 
-          bgImage="/images/work-bg.jpg" 
-          strength={300}
-          overlayColor="rgba(0, 0, 0, 0.6)"
-        >
-          <div className="text-white">
-            <h2 className="text-3xl md:text-5xl font-bold mb-8 text-center">Our Work</h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {[1, 2, 3].map((item) => (
-                <Card key={item} className="hover:shadow-lg transition-shadow bg-white/90 backdrop-blur-sm">
-                  <div className="aspect-video bg-gray-200 mb-4 rounded"></div>
-                  <h3 className="font-bold text-xl mb-2 text-gray-900">Project {item}</h3>
-                  <p className="text-gray-700 mb-4">A brief description of this amazing project and the technologies used.</p>
-                  <Button variant="secondary" size="small">View Details</Button>
-                </Card>
-              ))}
-            </div>
+        {/* Work Section */}
+        <section id="work" className="min-h-screen flex items-center justify-center p-8 bg-gray-50">
+          <div className="max-w-4xl mx-auto w-full">
+            <Work />
           </div>
-        </ParallaxSection>
+        </section>
         
         {/* Contact Section */}
         <section id="contact" className="min-h-screen flex items-center justify-center p-8 bg-gray-50">
