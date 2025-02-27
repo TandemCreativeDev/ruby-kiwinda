@@ -1,35 +1,54 @@
-import React, { useState } from 'react';
-import Link from 'next/link';
+import React, { useState, useEffect } from 'react';
+import { Link as ScrollLink, Events } from 'react-scroll';
 
 interface NavItemProps {
-  href: string;
+  to: string;
   label: string;
   active?: boolean;
+  setActive: (item: string) => void;
 }
 
-const NavItem: React.FC<NavItemProps> = ({ href, label, active = false }) => {
+const NavItem: React.FC<NavItemProps> = ({ to, label, active = false, setActive }) => {
   return (
-    <Link 
-      href={href}
+    <ScrollLink 
+      to={to}
+      spy={true}
+      smooth={true}
+      offset={-70} // Adjust based on navbar height
+      duration={500}
+      onSetActive={() => setActive(to)}
       className={`
-        font-serif text-lg relative px-4 py-2 transition-all duration-300
+        font-serif text-lg relative px-4 py-2 transition-all duration-300 cursor-pointer
         ${active ? 'text-black' : 'text-gray-700'}
         hover:text-black
         after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-[2px] 
         after:w-0 after:bg-black after:transition-all after:duration-300
         hover:after:w-full
+        ${active ? 'after:w-full' : ''}
       `}
     >
       {label}
-    </Link>
+    </ScrollLink>
   );
 };
 
 const Navbar: React.FC = () => {
   const [activeItem, setActiveItem] = useState('home');
   
+  useEffect(() => {
+    // Register events to update active state when scrolling
+    Events.scrollEvent.register('begin', () => {});
+    Events.scrollEvent.register('end', () => {});
+    
+    return () => {
+      // Clean up events
+      Events.scrollEvent.remove('begin');
+      Events.scrollEvent.remove('end');
+    };
+  }, []);
+  
   return (
-    <nav className="w-full bg-[#f8f5f0] py-6 px-8 shadow-sm">
+    <nav className="w-full bg-[#f8f5f0] py-6 px-8 shadow-sm fixed top-0 z-50">
       <div className="max-w-7xl mx-auto flex justify-between items-center">
         <div className="font-serif text-2xl font-bold text-black">
           Brand
@@ -37,24 +56,28 @@ const Navbar: React.FC = () => {
         
         <div className="flex space-x-2">
           <NavItem 
-            href="/" 
+            to="home" 
             label="Home" 
             active={activeItem === 'home'} 
+            setActive={setActiveItem}
           />
           <NavItem 
-            href="/about" 
+            to="about" 
             label="About" 
             active={activeItem === 'about'} 
+            setActive={setActiveItem}
           />
           <NavItem 
-            href="/work" 
+            to="work" 
             label="Work" 
             active={activeItem === 'work'} 
+            setActive={setActiveItem}
           />
           <NavItem 
-            href="/contact" 
+            to="contact" 
             label="Contact" 
             active={activeItem === 'contact'} 
+            setActive={setActiveItem}
           />
         </div>
       </div>
