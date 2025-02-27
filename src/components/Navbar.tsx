@@ -77,7 +77,7 @@ const Navbar: React.FC = () => {
           />
           <NavItem 
             to="contact" 
-            label="Contact" 
+            label="Get in Touch" 
             active={activeItem === 'contact'} 
             setActive={setActiveItem}
           />
