@@ -41,7 +41,7 @@ const NavItem: React.FC<NavItemProps> = ({ to, label, active = false, setActive,
 
 const Navbar: React.FC = () => {
   const [activeItem, setActiveItem] = useState('home');
-  const [visible, setVisible] = useState(false);
+  const [visible, setVisible] = useState(true); // Start visible by default
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const pathname = usePathname();
   
@@ -146,27 +146,44 @@ const Navbar: React.FC = () => {
             aria-label="Toggle menu"
             aria-expanded={mobileMenuOpen}
           >
-            <svg 
-              xmlns="http://www.w3.org/2000/svg" 
-              className="h-6 w-6" 
-              fill="none" 
-              viewBox="0 0 24 24" 
-              stroke="currentColor"
-            >
-              <path 
-                strokeLinecap="round" 
-                strokeLinejoin="round" 
-                strokeWidth={2} 
-                d="M4 6h16M4 12h16M4 18h16" 
-              />
-            </svg>
+            {mobileMenuOpen ? (
+              <svg 
+                xmlns="http://www.w3.org/2000/svg" 
+                className="h-6 w-6" 
+                fill="none" 
+                viewBox="0 0 24 24" 
+                stroke="currentColor"
+              >
+                <path 
+                  strokeLinecap="round" 
+                  strokeLinejoin="round" 
+                  strokeWidth={2} 
+                  d="M6 18L18 6M6 6l12 12" 
+                />
+              </svg>
+            ) : (
+              <svg 
+                xmlns="http://www.w3.org/2000/svg" 
+                className="h-6 w-6" 
+                fill="none" 
+                viewBox="0 0 24 24" 
+                stroke="currentColor"
+              >
+                <path 
+                  strokeLinecap="round" 
+                  strokeLinejoin="round" 
+                  strokeWidth={2} 
+                  d="M4 6h16M4 12h16M4 18h16" 
+                />
+              </svg>
+            )}
           </button>
         </div>
       </nav>
 
       {/* Mobile Menu Overlay */}
       <div 
-        className={`fixed inset-0 bg-black bg-opacity-50 z-[60] transition-opacity duration-300 ${
+        className={`fixed inset-0 bg-black bg-opacity-50 z-[60] transition-opacity duration-300 lg:hidden ${
           mobileMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
         }`}
         onClick={closeMobileMenu}
@@ -175,14 +192,14 @@ const Navbar: React.FC = () => {
 
       {/* Mobile Menu Panel */}
       <div 
-        className={`fixed right-0 top-0 h-full w-[80%] max-w-xs bg-white shadow-xl z-[70] transform transition-transform duration-300 ease-in-out ${
+        className={`fixed inset-y-0 right-0 w-full max-w-sm bg-white shadow-xl z-[70] transform transition-transform duration-300 ease-in-out lg:hidden ${
           mobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
         }`}
         aria-label="Mobile menu"
         role="dialog"
         aria-modal="true"
       >
-        <div className="flex justify-end p-4">
+        <div className="flex justify-end p-6">
           <button 
             onClick={closeMobileMenu}
             aria-label="Close menu"
@@ -204,14 +221,14 @@ const Navbar: React.FC = () => {
             </svg>
           </button>
         </div>
-        <div className="flex flex-col items-start space-y-6 mt-8 px-6">
+        <div className="flex flex-col items-center space-y-8 mt-12 px-6">
           <NavItem 
             to="home" 
             label="Home" 
             active={activeItem === 'home'} 
             setActive={setActiveItem}
             onClick={closeMobileMenu}
-            className="text-xl w-full"
+            className="text-2xl w-full text-center"
           />
           <NavItem 
             to="about" 
@@ -219,7 +236,7 @@ const Navbar: React.FC = () => {
             active={activeItem === 'about'} 
             setActive={setActiveItem}
             onClick={closeMobileMenu}
-            className="text-xl w-full"
+            className="text-2xl w-full text-center"
           />
           <NavItem 
             to="work" 
@@ -227,7 +244,7 @@ const Navbar: React.FC = () => {
             active={activeItem === 'work'} 
             setActive={setActiveItem}
             onClick={closeMobileMenu}
-            className="text-xl w-full"
+            className="text-2xl w-full text-center"
           />
           <NavItem 
             to="contact" 
@@ -235,7 +252,7 @@ const Navbar: React.FC = () => {
             active={activeItem === 'contact'} 
             setActive={setActiveItem}
             onClick={closeMobileMenu}
-            className="text-xl w-full"
+            className="text-2xl w-full text-center"
           />
         </div>
       </div>
