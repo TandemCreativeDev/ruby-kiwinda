@@ -8,7 +8,7 @@ interface FooterProps {
 
 const Footer = ({ className = "" }: FooterProps) => {
   return (
-    <footer className={`bg-gray-900 text-white py-24 ${className}`}>
+    <footer className={`bg-gray-900 text-white pt-36 pb-24 ${className}`}>
       <div className="max-w-6xl mx-auto px-8">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-16">
           {/* Brand Column */}
@@ -33,7 +33,7 @@ const Footer = ({ className = "" }: FooterProps) => {
           {/* Navigation Column */}
           <div className="space-y-8">
             <h3 className="font-serif text-2xl mb-6 border-b border-gray-700 pb-4">Navigation</h3>
-            <nav className="space-y-6">
+            <div className="space-y-6">
               <Link href="/" className="block font-serif text-lg text-gray-300 hover:text-white transition-colors duration-300">
                 Home
               </Link>
@@ -46,7 +46,7 @@ const Footer = ({ className = "" }: FooterProps) => {
               <Link href="#contact" className="block font-serif text-lg text-gray-300 hover:text-white transition-colors duration-300">
                 Contact
               </Link>
-            </nav>
+            </div>
           </div>
           
           {/* Connect Column */}
