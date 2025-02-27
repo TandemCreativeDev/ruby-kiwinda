@@ -27,7 +27,11 @@ const Contact = ({ className = "" }: ContactProps) => {
   };
 
   return (
-    <div id="contact" className={`pt-32 pb-24 bg-[#f8f5f0] ${className}`} style={{ scrollMarginTop: '100px', paddingTop: '6rem' }}>
+    <div
+      id="contact"
+      className={`pt-32 pb-24 bg-[#f8f5f0] ${className}`}
+      style={{ scrollMarginTop: "100px", paddingTop: "6rem" }}
+    >
       <div className="container mx-auto px-8 max-w-5xl">
         <div className="flex flex-col md:flex-row gap-16">
           {/* Left side - Contact information */}
@@ -36,24 +40,34 @@ const Contact = ({ className = "" }: ContactProps) => {
               Get in touch
             </h2>
             <p className="text-xl font-serif leading-relaxed text-gray-800 mb-8">
-              We'd love to hear from you. Whether you have a question about our
-              services, projects, or anything else, our team is ready to answer
-              all your questions.
+              We would love to hear from you. Whether you have a question about
+              our services, projects, or anything else, our team is ready to
+              answer all your questions.
             </p>
 
             <div className="space-y-6 mt-12">
               <div className="group transition-all duration-300 p-4 -mx-4 rounded-lg hover:bg-white hover:shadow-md">
-                <h3 className="text-xl font-serif font-medium mb-2 group-hover:text-black">Email</h3>
-                <p className="text-gray-700 group-hover:text-black">hello@example.com</p>
+                <h3 className="text-xl font-serif font-medium mb-2 group-hover:text-black">
+                  Email
+                </h3>
+                <p className="text-gray-700 group-hover:text-black">
+                  hello@example.com
+                </p>
               </div>
 
               <div className="group transition-all duration-300 p-4 -mx-4 rounded-lg hover:bg-white hover:shadow-md">
-                <h3 className="text-xl font-serif font-medium mb-2 group-hover:text-black">Phone</h3>
-                <p className="text-gray-700 group-hover:text-black">+1 (555) 123-4567</p>
+                <h3 className="text-xl font-serif font-medium mb-2 group-hover:text-black">
+                  Phone
+                </h3>
+                <p className="text-gray-700 group-hover:text-black">
+                  +1 (555) 123-4567
+                </p>
               </div>
 
               <div className="group transition-all duration-300 p-4 -mx-4 rounded-lg hover:bg-white hover:shadow-md">
-                <h3 className="text-xl font-serif font-medium mb-2 group-hover:text-black">Address</h3>
+                <h3 className="text-xl font-serif font-medium mb-2 group-hover:text-black">
+                  Address
+                </h3>
                 <p className="text-gray-700 group-hover:text-black">
                   123 Design Street
                   <br />
@@ -126,7 +140,9 @@ const Contact = ({ className = "" }: ContactProps) => {
                 variant="outline"
                 className="mt-8 px-8 py-3 border-2 border-black text-black hover:bg-black hover:text-white transition-all duration-300 font-serif text-lg relative overflow-hidden group"
               >
-                <span className="relative z-10 group-hover:text-white transition-colors duration-300">Send Message</span>
+                <span className="relative z-10 group-hover:text-white transition-colors duration-300">
+                  Send Message
+                </span>
                 <span className="absolute inset-0 bg-black transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
               </Button>
             </form>
