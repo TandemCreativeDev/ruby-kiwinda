@@ -30,7 +30,7 @@ const NavItem: React.FC<NavItemProps> = ({ to, label, active = false, setActive,
         after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-[2px] 
         after:w-0 after:bg-black after:transition-all after:duration-300
         hover:after:w-full
-        ${active ? 'after:w-full' : ''}
+        ${active ? 'lg:after:w-full' : ''}
         ${className}
       `}
     >
