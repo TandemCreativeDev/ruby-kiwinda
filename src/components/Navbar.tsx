@@ -112,14 +112,14 @@ const Navbar: React.FC = () => {
     <>
       {/* Fixed navbar that appears when scrolling past hero */}
       <nav
-        className={`w-full bg-[#f8f5f0] pt-6 pb-6 px-4 md:px-8 shadow-sm fixed top-0 z-50 transition-all duration-300 ${
+        className={`w-full bg-[#f8f5f0] py-4 px-4 md:px-8 shadow-sm fixed top-0 z-50 transition-all duration-300 ${
           visible
             ? "translate-y-0 opacity-100"
             : "translate-y-[-100%] opacity-0"
         }`}
-        style={{ height: "90px" }}
+        style={{ height: "auto" }}
       >
-        <div className="max-w-7xl mx-auto flex justify-between items-center pt-2">
+        <div className="max-w-7xl mx-auto flex justify-between items-center py-2">
           <div className="font-serif text-2xl font-bold text-black">
             Ruby Kiwinda
           </div>
