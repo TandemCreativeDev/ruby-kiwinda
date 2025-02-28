@@ -8,7 +8,7 @@ interface FooterProps {
 
 const Footer = ({ className = "" }: FooterProps) => {
   return (
-    <footer id="footer" className={`bg-gray-900 text-white pt-16 sm:pt-24 pb-16 sm:pb-24 mt-16 sm:mt-24 ${className}`} style={{ scrollMarginTop: '100px', paddingTop: '6rem' }}>
+    <footer id="footer" className={`bg-gray-900 text-white pb-16 sm:pb-24 mt-16 sm:mt-24 ${className}`} style={{ scrollMarginTop: '100px', paddingTop: '8rem' }}>
       <div className="max-w-6xl mx-auto px-4 sm:px-8">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 sm:gap-12 md:gap-16">
           {/* Brand Column */}

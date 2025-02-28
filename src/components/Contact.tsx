@@ -29,8 +29,8 @@ const Contact = ({ className = "" }: ContactProps) => {
   return (
     <div
       id="contact"
-      className={`pt-20 sm:pt-32 pb-16 sm:pb-24 bg-[#f8f5f0] ${className}`}
-      style={{ scrollMarginTop: "100px", paddingTop: "6rem" }}
+      className={`pb-16 sm:pb-24 bg-[#f8f5f0] ${className}`}
+      style={{ scrollMarginTop: "100px", paddingTop: "8rem" }}
     >
       <div className="container mx-auto px-4 sm:px-8 max-w-5xl">
         <div className="flex flex-col md:flex-row gap-8 md:gap-16">

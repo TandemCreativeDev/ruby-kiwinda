@@ -117,7 +117,7 @@ const Navbar: React.FC = () => {
             ? "translate-y-0 opacity-100"
             : "translate-y-[-100%] opacity-0"
         }`}
-        style={{ height: "auto" }}
+        style={{ height: "auto", paddingTop: "1rem", paddingBottom: "1rem" }}
       >
         <div className="max-w-7xl mx-auto flex justify-between items-center py-2">
           <div className="font-serif text-2xl font-bold text-black">
