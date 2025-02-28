@@ -41,7 +41,7 @@ const NavItem: React.FC<NavItemProps> = ({ to, label, active = false, setActive,
 
 const Navbar: React.FC = () => {
   const [activeItem, setActiveItem] = useState('home');
-  const [visible, setVisible] = useState(true); // Start visible by default
+  const [visible, setVisible] = useState(false); // Start hidden by default
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const pathname = usePathname();
   
@@ -104,9 +104,9 @@ const Navbar: React.FC = () => {
   return (
     <>
       {/* Fixed navbar that appears when scrolling past hero */}
-      <nav className={`w-full bg-[#f8f5f0] py-4 px-4 md:px-8 shadow-sm fixed top-0 z-50 transition-all duration-300 ${
-        visible ? 'translate-y-0 opacity-100' : 'translate-y-full opacity-0'
-      }`} style={{ height: '80px' }}>
+      <nav className={`w-full bg-[#f8f5f0] py-6 px-4 md:px-8 shadow-sm fixed top-0 z-50 transition-all duration-300 ${
+        visible ? 'translate-y-0 opacity-100' : 'translate-y-[-100%] opacity-0'
+      }`} style={{ height: '90px' }}>
         <div className="max-w-7xl mx-auto flex justify-between items-center">
           <div className="font-serif text-2xl font-bold text-black">
             Brand
@@ -209,7 +209,7 @@ const Navbar: React.FC = () => {
 
       {/* Mobile Menu Overlay */}
       <div 
-        className={`fixed inset-0 bg-black bg-opacity-50 z-[60] transition-opacity duration-300 lg:hidden ${
+        className={`fixed inset-0 bg-black bg-opacity-50 z-[60] transition-opacity duration-300 ${
           mobileMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
         }`}
         onClick={closeMobileMenu}
@@ -218,7 +218,7 @@ const Navbar: React.FC = () => {
 
       {/* Mobile Menu Panel */}
       <div 
-        className={`fixed inset-y-0 right-0 w-full max-w-sm bg-white shadow-xl z-[70] transform transition-transform duration-300 ease-in-out lg:hidden ${
+        className={`fixed inset-y-0 right-0 w-full max-w-sm bg-white shadow-xl z-[70] transform transition-transform duration-300 ease-in-out ${
           mobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
         }`}
         aria-label="Mobile menu"
